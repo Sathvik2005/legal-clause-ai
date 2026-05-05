@@ -1,0 +1,61 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "LegalEasy API",
+    "version": "0.1.0",
+    "description": "Document analysis, analytics, and chat endpoints for the LegalEasy prototype."
+  },
+  "servers": [{ "url": "http://localhost:3000" }],
+  "paths": {
+    "/v1/documents": {
+      "post": {
+        "summary": "Create a document from pasted text",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["text"],
+                "properties": {
+                  "title": { "type": "string" },
+                  "text": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Document created",
+            "content": { "application/json": { "schema": { "type": "object", "properties": { "documentId": { "type": "string" } } } } }
+          }
+        }
+      }
+    },
+    "/v1/documents/{id}/analyze": {
+      "post": {
+        "summary": "Queue a document analysis job",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": {
+          "202": {
+            "description": "Queued",
+            "content": { "application/json": { "schema": { "type": "object", "properties": { "jobId": { "type": "string" } } } } }
+          }
+        }
+      }
+    },
+    "/v1/documents/{id}": {
+      "get": {
+        "summary": "Get a document and its analyses",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "description": "Document payload",
+            "content": { "application/json": { "schema": { "type": "object" } } }
+          }
+        }
+      }
+    }
+  }
+}

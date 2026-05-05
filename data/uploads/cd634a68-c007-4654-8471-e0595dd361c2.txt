@@ -1,0 +1,4464 @@
+
+
+
+
+A project report on
+
+
+
+PREPFORGE: AI-BASED CAREER GROWTH AND
+
+ 
+
+MONITORING SYSTEM
+
+
+
+Submitted in partial fulfillment for the award of the degree of
+
+
+
+Bachelor Of Technology
+
+in
+
+Computer Science and Engineering
+
+
+
+By
+
+
+
+PEDASINGU BINDHU VARDHAN KUMAR (22BCE20129)
+
+
+
+AKULA SAMPATH SAI (22BCE8945) 
+
+
+
+KANITHI TIRUMALA SATYA SATHVIK (22BCE8492)
+
+
+
+
+
+
+
+     		
+
+
+
+                                 SCHOOL OF COMPUTER  SCIENCE AND ENGINEERING
+
+VIT-AP UNIVERSITY 
+
+Amaravati, Andhra Pradesh, India
+
+May 2026
+
+
+
+ PREPFORGE: AI -BASED CAREER GROWTH AND MONITORING SYSTEM
+
+Submitted in partial fulfillment for the award of the degree of
+
+Bachelor Of Technology
+
+in
+
+Computer Science and Engineering
+
+by
+
+PEDASINGU BINDHU VARDHAN KUMAR (22BCE20129)
+
+AKULA SAMPATH SAI (22BCE8945) 
+
+KANITHI TIRUMALA SATYA SATHVIK (22BCE8492)
+
+Under the guidance of Mukkoti Maruthi Venkata Chalapathi,
+
+Department of Artificial Intelligence and Machine Learning VIT-AP University
+
+                                       SCHOOL OF COMPUTER  SCIENCE AND          ENGINEERING                                   
+
+VIT-AP UNIVERSITY
+
+Amaravati, Andhra Pradesh, India
+
+May 2026
+
+
+
+
+
+
+
+DECLARATION
+
+
+
+
+
+We here by declare that the thesis entitled “ PREPFORGE: AI -BASED CAREER GROWTH AND MONITORING SYSTEM ” submitted by me, for the award of the degree of Bachelor of Technology in Computer Science and Engineering  at VIT-AP University is a record of Bonafide work carried out by me under the supervision of  Mukkoti Maruthi Venkata Chalapathi.
+
+We further declare that the work reported in this thesis has not been submitted and will not be submitted, either in part or in full, for the award of any other degree or diploma in this institute or any other institute or university.
+
+
+
+
+
+
+
+
+
+Place: Amaravati                                                                                   
+
+Date: 
+
+Candidates:
+
+Pedasingu Bindhu Vardhan Kumar
+
+22BCE20129
+
+Akula Sampath Sai
+
+22BCE8945
+
+Kanithi Tirumala Satya Sathvik
+
+22BCE8492
+
+
+
+
+
+
+
+
+
+
+
+CERTIFICATE
+
+
+
+This is to certify that the Senior Design Project titled “PREPFORGE: AI -BASED CAREER GROWTH AND MONITORING SYSTEM” that is being submitted by  Pedasingu Bindhu Vardhan Kumar (22bce20129), Akula Sampath Sai (22bce8945), Kanithi Tirumala Satya Sathvik (22bce8492)s in partial fulfillment of the requirements for the award of Bachelor of Technology, is a record of bonafide work done under my guidance. The contents of this Project work, in full or in parts, have neither been taken from any other source nor have been submitted to any other Institute or University for award of any degree or diploma and the same is certified.
+
+
+
+
+
+Mukkoti Maruthi Venkata Chalapathi
+
+          Guide
+
+                                     School of CSE, VIT-AP
+
+
+
+The thesis is ___________________satisfactory / unsatisfactory
+
+
+
+                
+
+Internal Examiner                                                                                                       External Examiner
+
+
+
+
+
+
+
+Approved by
+
+PROGRAM CHAIR 
+
+B.Tech. CSE
+
+
+
+DEAN
+
+                                                       School Of Computer Science and Engineering 
+
+
+
+
+
+
+
+ABSTRACT
+
+
+
+
+
+Modern interview selection processes require candidates to demonstrate subject-matter competence, clear communication skills, and rapid problem-solving skills. However, traditional systems of interview preparation usually provide static questionnaires, generic tips, and undisclosed scores, which makes their educational component rather weak and hard to generalize. This paper proposes PrepForge, a full-stack, AI-powered interview preparation tool, offering personalized mock interviews, job-resume match analysis, dynamic gap assessments, and progress visualization.
+
+
+
+Core modules include resume parsing and ATS-style scoring, job-description requirement extraction, adaptive interview orchestration, a rule-based multi-metric evaluation engine, coding practice support, and report generation.This tool utilizes React.js for frontend development, Node.js and Express for the backend side, and a MongoDB database coupled with web sockets for providing real-time communication. At the same time, the evaluation process is supported by deterministic models combined with language model–powered question generation.In terms of academic novelty, Prepforge can be praised for its transparent and highly replicable architecture. Unlike other similar tools, Prepforge calculates the output of its evaluations via certain formulas taking into account clarity, relevancy, depth, structural and technical correctness of responses provided.
+
+
+
+Additionally, the platform adopts a novel distinction between knowledge-based and articulation-based gaps in knowledge, allowing evaluators to provide much more granular feedback than most traditional evaluation systems, which have historically treated all errors uniformly. By integrating the use of WebRTC-based video conferencing technology with event-driven architecture into the real-time interview simulation process, PrepForge enhances user-friendliness and validity of the simulation process by simulating actual interviews, including timing constraints and the sequential order in which questions are asked.
+
+
+
+From a research perspective, PrepForge contributes to the rapidly developing field of explainable educational artificial intelligence (AI) by integrating semantic understanding of subject matter with structured evaluation metrics. It also illustrates that predicting skills that are not role-specific and adapting interviews dynamically can be achieved regardless of technical domain using no prior job descriptions.
+
+ 
+
+Overall, PrepForge signifies a transition away from traditional non-transparent, non-adaptive, and non-learner-centric interview preparation systems to transparent, adaptive, and learner-centered interview preparation systems, bridging the gap between automated evaluations and evaluations similar to those done by humans while complying with ethical principles of AI.
+
+
+
+Keywords: adaptive interviewing, skill-gap analytics, ATS scoring, rule-based evaluation, educational AI, interview readiness.
+
+
+
+ACKNOWLEDGEMENT
+
+
+
+
+
+It is our pleasure to express with deep sense of gratitude to Mukkoti Maruthi Venkata Chalapathi, School of Computer Science and Engineering, VIT-AP University, for his constant guidance, continual encouragement, understanding; more than all, he taught me patience in our endeavor. Our association with him is not confined to academics only, but it is a great opportunity on our part of work with an intellectual and expert in the field of  Artificial Intelligence and Machine Learning.
+
+We would like to express our gratitude to the Chancellor, Vice Presidents, Vice Chancellor, and the Dean of the School of Computer Science and Engineering, for providing with an environment to work in and for his inspiration during the tenure of the course.
+
+In jubilant mood we express ingeniously my whole-hearted thanks to Program chair, all teaching staff and members working as limbs of our university for their not-self-centered enthusiasm coupled with timely encouragements showered on me with zeal, which prompted the acquirement of the requisite knowledge to finalize my course study successfully. We would like to thank my parents for their support.
+
+It is indeed a pleasure to thank our friends who persuaded and encouraged us to take up and complete this task. At last but not least, We express my gratitude and appreciation to all those who have helped me directly or indirectly toward the successful completion of this project.
+
+Place: Amaravati
+
+Date:	Name of the student 
+
+                                                                                   
+
+Pedasingu Bindhu Vardhan Kumar 
+
+Akula Sampath Sai 
+
+Kanithi Tirumala Satya Sathvik
+
+
+
+
+
+
+
+	CONTENTS
+
+
+
+ACKNOWLEDGEMENT 
+
+iv
+
+TABLE OF CONTENTS 
+
+
+
+LIST OF FIGURES
+
+
+
+LIST OF TABLES
+
+
+
+LIST OF ACRONYMS
+
+
+
+
+
+
+
+CHAPTER 1: INTRODUCTION
+
+15
+
+1.1 Background
+
+15
+
+1.2 Problem Statement  
+
+15
+
+1.3 Objectives
+
+16
+
+1.4 Scope of the Study
+
+16
+
+1.5 Significance of the Study
+
+17
+
+1.6 Motivation
+
+17
+
+1.7 Industrial Relevance
+
+18
+
+1.8 Research Questions
+
+18
+
+1.9 Assumptions and Constraints
+
+19
+
+1.10 Contributions of the Work
+
+19
+
+
+
+
+
+CHAPTER 2: LITERATURE REVIEW AND PROBLEM ANALYSIS
+
+20
+
+2.1 Existing Approaches
+
+20
+
+2.2 Research Gap
+
+20
+
+2.3 Comparative Analysis
+
+21
+
+2.4 Problem Decomposition
+
+21
+
+2.5 Interview Readiness as a Multi-Dimensional Construct
+
+21
+
+2.6 From Static Evaluation to Adaptive Evaluation
+
+22
+
+2.7 Explainability in Educational AI
+
+22
+
+2.8 Resume Analytics and Role Context
+
+22
+
+2.9 Skill Gap Taxonomy and Pedagogical Actionability
+
+23
+
+2.10 Synthesis of Literature Gap
+
+23
+
+
+
+
+
+CHAPTER 3: SYSTEM REQUIREMENTS AND ARCHITECTURE
+
+32
+
+3.1 System Overview
+
+32
+
+3.2 Functional Requirements
+
+32
+
+3.3 Non-Functional Requirements
+
+33
+
+3.4 Technology Stack
+
+33
+
+3.5 High-Level Architecture
+
+33
+
+3.6 Security and Governance Considerations
+
+34
+
+3.7 Chapter Summary
+
+34
+
+3.8 Architectural Design Principles
+
+36
+
+3.9 Detailed Component View
+
+36
+
+3.10 Data Model Rationale
+
+37
+
+3.11 Reliability and Fault Tolerance Considerations
+
+37
+
+3.12 Security Posture
+
+37
+
+3.13 Architecture Diagram
+
+38
+
+3.14 Workflow Diagram: Session Lifecycle
+
+38
+
+
+
+
+
+CHAPTER 4: METHODOLOGY AND IMPLEMENTATION
+
+39
+
+4.1 Development Methodology
+
+39
+
+4.2 Core Data Models
+
+39
+
+4.3 Adaptive Interview Orchestration
+
+40
+
+4.4 Evaluation Engine
+
+40
+
+4.5 Gap Detection Logic
+
+40
+
+4.6 API and Route Design
+
+41
+
+4.7 Frontend Workflow
+
+42
+
+4.8 Interview State Transition Model
+
+42
+
+4.9 Formalized Evaluation Procedure
+
+43
+
+4.10 Adaptive Question Selection Heuristic
+
+43
+
+4.11 Prompt Governance and AI Usage Boundaries
+
+43
+
+4.12 Frontend Interaction Design
+
+43
+
+4.13 Implementation Challenges and Resolutions
+
+44
+
+4.14 Workflow Diagram: Evaluation Decision Flow
+
+44
+
+4.15 Workflow Diagram: Interview State Transitions
+
+45
+
+
+
+
+
+CHAPTER 5: EXPERIMENTAL ANALYSIS AND RESULTS
+
+46
+
+5.1 Evaluation Strategy
+
+46
+
+5.2 Qualitative Observation
+
+46
+
+5.3 Sample Session Analysis
+
+46
+
+5.4 Trend Interpretation
+
+46
+
+5.5 System Strengths 
+
+46
+
+5.6 Limitations 
+
+47
+
+5.7 Chapter Summary
+
+47
+
+5.8 Experimental Setup
+
+47
+
+5.9 Metrics for System Evaluation
+
+47
+
+5.10 Illustrative Trend Case
+
+47
+
+5.11 Ablation-Style Interpretation
+
+48
+
+5.12 Error Analysis
+
+48
+
+5.13 Practical Outcome Summary
+
+48
+
+5.14 Additional Tables for Evaluation Rigor
+
+48
+
+5.15 Diagram: Experimental Workflow
+
+49
+
+
+
+
+
+CHAPTER 6: DISCUSSION
+
+51
+
+6.1 Academic Contribution
+
+51
+
+6.2 Engineering Contribution
+
+51
+
+6.3 Educational Impact
+
+51
+
+6.4 Ethics and Fairness Considerations
+
+51
+
+6.5 Discussion Summary
+
+51
+
+6.6 Theoretical Implications
+
+51
+
+6.7 Practical Deployment Considerations
+
+52
+
+6.8 Ethical Reflection
+
+52
+
+6.9 Threats to Validity
+
+52
+
+6.10 Discussion Closure
+
+52
+
+
+
+
+
+
+
+
+
+CHAPTER 7: CONCLUSION AND FUTURE WORK
+
+53
+
+7.1 Conclusion
+
+53
+
+7.2 Future Work
+
+53
+
+7.3 Extended Closing Perspective
+
+54
+
+
+
+
+
+CHAPTER 8 :  REFERENCES
+
+55
+
+
+
+
+
+ CHAPTER 9  :APPENDICES
+
+59
+
+Appendix 1: Format Compliance Sheet
+
+59
+
+Appendix 2: Chapter-Wise Content Expansion Guide
+
+59
+
+Appendix 3: Key Module Index of PrepForge Codebase
+
+59
+
+Appendix 4: Declaration and Certificate Sign-Off Checklist
+
+60
+
+Appendix 5: API Endpoint Samples
+
+60
+
+Appendix 6: Data Model Snapshots and Schema Rationale
+
+61
+
+Appendix 7: Interview Transcript Exemplar with Metric Annotations
+
+62
+
+Appendix 8: Test Case Catalog and Validation Checklist
+
+ 62
+
+Appendix 9: Failure Scenarios and Troubleshooting Guide
+
+62
+
+Appendix 10: Deployment Notes and Environment Configuration Matrix
+
+63
+
+Appendix 11: User Manual
+
+64
+
+
+
+LIST OF FIGURES
+
+
+
+
+
+
+
+1.1 Resume intelligence and parsing workflow
+
+
+
+Semantic candidate-job matching flow
+
+
+
+1.3 Explainable AI integration in recruitment
+
+
+
+1.4 AI-based interview simulation workflow
+
+
+
+Skill-gap analysis and recommendation flow
+
+41
+
+1.6 Real-time feedback and WebSocket communication flow
+
+
+
+High-level layered architecture of PrepForge
+
+33
+
+3.2 System workflow diagram
+
+38
+
+3.3 Interview session lifecycle diagram
+
+38
+
+Evaluation pipeline for answer assessment
+
+39
+
+4.2 Interview state transition model
+
+42
+
+4.3 Adaptive question selection strategy
+
+43
+
+Rule-based scoring and gap detection flow
+
+45
+
+Sample score improvement across attempts
+
+50
+
+5.2 Trend analysis dashboard
+
+54
+
+5.3 Experimental workflow diagram
+
+66
+
+6.1 Relationship between explainability, fairness, and adaptability
+
+
+
+
+
+
+
+LIST OF TABLES
+
+
+
+
+
+
+
+2.1 Comparison of existing interview preparation platforms
+
+21
+
+2.2 Research gap summary
+
+
+
+2.3 Skill gap taxonomy
+
+
+
+3.1 Functional requirements
+
+32
+
+3.2 Non-functional requirements
+
+33
+
+3.3 Technology stack
+
+33
+
+3.4 Core data entities and relationships
+
+
+
+4.1 Evaluation metrics and weights
+
+40
+
+4.2 Gap detection rules
+
+
+
+4.3 API route design
+
+41
+
+4.4 Interview state variables
+
+
+
+5.1 Sample session scores across attempts
+
+46
+
+5.2 Evaluation mode comparison
+
+48
+
+5.3 Gap type and recommended intervention
+
+48
+
+5.4 Risk analysis and mitigation
+
+
+
+A8.1 Test case catalog and validation checklist
+
+61
+
+A10.1 Deployment environment configuration matrix
+
+62
+
+
+
+
+
+
+
+
+
+LIST OF ACRONYMS
+
+AI - Artificial Intelligence
+
+ATS - Applicant Tracking System
+
+API - Application Programming Interface
+
+CV - Curriculum Vitae
+
+GD - Gap Detection
+
+HCI - Human-Computer Interaction
+
+JD - Job Description
+
+LLM - Large Language Model
+
+LMS - Learning Management System
+
+ML - Machine Learning
+
+NLP - Natural Language Processing
+
+NFR - Non-Functional Requirement
+
+PDF - Portable Document Format
+
+REST - Representational State Transfer
+
+SHAP - Shapley Additive Explanations
+
+SQL - Structured Query Language
+
+UI - User Interface
+
+XAI - Explainable Artificial Intelligence
+
+JWT - JSON Web Token
+
+JSON - JavaScript Object Notation
+
+PDF - Portable Document Format
+
+NFR - Non-Functional Requirement
+
+MANET - Mobile Ad hoc Network
+
+
+
+CHAPTER 1
+
+INTRODUCTION
+
+
+
+1.1 Background
+
+
+
+Preparation for technical interviews has moved away from mere textbook study to competency enhancement through scenarios. While recruiters have moved beyond assessing just the subject matter expertise, they assess skills such as communication and contextual reasoning abilities. Despite this paradigm shift, many traditional methods rely on predefined questions and scoring criteria, which do not account for learning progression and give no rationale for candidate performance. 
+
+
+
+Additionally, these types of systems usually fall short of accurately replicating an actual interview experience because the interviewer may change and modify the questions that are asked during an interview based on the candidates' responses, as well as how well they are explaining their answers. Because of the lack of an adaptive questioning mechanism, as well as the absence of an explainable means of evaluating candidate responses, both the realism and educational benefit to the candidate will be reduced. As such, candidates will not have an opportunity to discover specific areas they can improve on, especially with respect to distinguishing between gaps in concepts and gaps in communication.
+
+
+
+Furthermore, the majority of existing platforms provide candidates with an aggregated score with no transparent reasoning behind the score provided, making it very difficult for a candidate to understand how they were evaluated. Lack of interpretable reasoning will lower trust in an automated interview system and limit its potential uses in academic or professional assessment.
+
+
+
+
+
+1.2 Problem Statement
+
+
+
+The central problem addressed in this work is the absence of an integrated platform that can:
+
+
+
+1. Align resume content with role-specific job requirements.
+
+2. Conduct adaptive, real-time interview simulations.
+
+3. Evaluate responses with transparent and reproducible logic.
+
+4. Identify and prioritize multi-dimensional skill gaps.
+
+5. Track progress over repeated sessions.
+
+
+
+Generally, existing solutions deal with these items separately, which creates separate learning opportunities and inconsistent ways of evaluating these areas. Additionally, they do not connect resume assertions, interview performance, and skill assessment into one cohesive feedback loop. 
+
+
+
+This gap is a considerable barrier for candidates; they do not know both what is missing and why do you not perform as well as they could, so they do not know how to develop a means of improving. The lack of a rational set of evaluation methods also creates a lack of trust in automated systems, creating barriers for use in educational settings and the workplace.
+
+Thus, we need a cohesive, rational, and adaptable system with these functionalities on one platform; therefore developing realistic interview simulation, transparent evaluations and ongoing skill development will provide the opportunity for performance enhancement for all.
+
+
+
+
+
+1.3 Objectives
+
+
+
+The project was developed with the following objectives:
+
+
+
+Create and build a complete interview prep platform from the ground up with a design that makes it easy to maintain and extend.
+
+
+
+Create dynamic ways to analyze resumes and job descriptions so interviews are generated based on candidate skills, experience, and role.
+
+
+
+Establish a deterministic and rule-based system to evaluate candidates that ensures transparency, reproducibility, and understanding of results.
+
+
+
+Implement adaptive interview orchestration where the answer to each question will determine what question will be asked next based on what the candidate has done during his or her interview so far, along with using performance metrics for the candidate.
+
+
+
+Have multi-dimensional ways to analyze candidates' performance on interviews, including clarity, relevance and depth, with tailored suggestions for candidates to continue improving through their own efforts.
+
+
+
+Have the ability to track user progress over time by tracking their performance over multiple sessions to measure their skills' growth.
+
+
+
+
+
+1.4 Scope
+
+
+
+Scope involves resume parsing, role fit, adaptive testing, code assistance, gap analysis, and reporting. It excludes enterprise-scale proctoring, anticheat functionality, and scalable deployment for production use.
+
+
+
+Several advanced features, such as emotion recognition, deep behavioural analysis, and multi-language conversational support, have been identified for future enhancement rather than part of current functionality. Additionally, automated mitigation frameworks for addressing bias are not included in the system, nor is there a means to evaluate fairness; thus, fairness audits are considered future research and development opportunities.
+
+
+
+
+
+
+
+1.5 Significance
+
+
+
+PrepForge advances education technology through the blend of AI-assisted content creation and rules-based academic assessment. This combination facilitates customization without sacrificing evaluative openness.
+
+
+
+With this new design, we are offering an innovative way for aspiring professionals to learn by assessing their skill level and providing feedback to help them develop through clearly defined paths of improvement. The distinguishing factors here are the separation of the identified shortfall of knowledge vs. the identified shortfall of communication leading to much more precise and actionable feedback than would have been provided through traditional methods of assessment.
+
+
+
+On account of these changes PrepForge now provides a more dynamic, learner-centered approach to preparing for interviews by recreating a slightly more realistic environment to what an actual mentor provides when developing real-world skills.
+
+
+
+
+
+1.6 Motivation
+
+
+
+Preparation for interviews is no longer about memorizing information regarding standard terms and answering factual questions using that prepared knowledge. In current recruitment processes, especially in software-based and data-driven industries, recruiters examine a range of skills, such as comprehension abilities, logical reasoning, quality of communication, skill in decomposing problems, and ability to think adaptively in an uncertain situation. Preparation methods are fragmented in many ways: a person can prepare for a coding interview through one channel, submit their CV on a different one, and practice conversation on a third. This causes difficulties in interpretation of results.
+
+
+
+Students and early career folks often talk about how confusing it gets with all these different tools giving advice that just doesnt line up. Like, one resume thing might push for stuffing in keywords to beat the bots, but then interview prep is all about weaving in your stories to make sense of it all, and coding platforms only care if the algorithm works right or not. It seems like theres this big gap there, you know, no way to pull it together.That mismatch is basically what kicked off the idea for PrepWiser. Without some kind of overall view, its hard to really adjust what youre doing on your own. I think thats the main issue.So PrepWiser tries to fix that by being one platform that looks at resumes, how well they fit the job, interview skills, and even closing those weak spots, all as parts of being ready instead of separate scores. It feels a bit messy to explain, but yeah, connected like that. Not everything ties up perfectly, but its better than jumping between apps.
+
+
+
+The second aspect relates to the issue of transparency; while most AI based platforms used for conducting interviews offer a conversational experience throughout the entire interview, they are not forthcoming on how the grading system works. Without knowing how this grading occurred, it is nearly impossible for students to create any level of trust which ultimately inhibits the opportunity for them to derive some form of instructional benefit. The more insight that a student has regarding how their grade was determined against a specific set of standards or criteria, the greater the likelihood that he or she will have some motivation to learn and grow academically.
+
+
+
+
+
+1.7 Industrial Relevance
+
+
+
+Time to screen is decreasing as the complexity of roles has increased in the way that most recruiters and hiring managers are now required to make high-stakes inference about the candidates' fit for their positions based only on a few sparse signals provided by each candidate (e.g., resume, short interview, or coding round). As such, if a candidate does not have complete preparation, they may be inequitably eliminated from consideration, even though they probably have latent potential. A preparation system that aligns preparation with real interview structure will help reduce the disconnection between candidates' actual performance and perceived performance during an interview.
+
+
+
+PrepForge contributes practical value through five industrially relevant capabilities: 
+
+ 
+
+1. Resume-to-role alignment with explicit mismatch signals. 
+
+2. Adaptive questioning that tests unverified required skills. 
+
+3. Could we combine evaluating resumes with interview performance in order to create useful, actionable skill-gap reports? 
+
+4. Can longitudinal tracking help us achieve better self-regulated learning than just doing a one-time evaluation? 
+
+5. Can we create an AI-assisted but rules-based system that is both pedagogically-valid and academically valid?
+
+
+
+
+
+1.8 Research Questions
+
+
+
+The project is guided by the following research questions: 
+
+ 
+
+1. Can a deterministic scoring engine provide sufficiently informative feedback for conversational interview preparation? 
+
+ 
+
+2. Does adaptive question sequencing improve perceived relevance and progressive performance quality? 
+
+ 
+
+3. Is it possible to integrate resume analysis and interview skills into something that can provide meaningful skill-gap priorities?
+
+ 
+
+4. Is there better self-regulated learning behavior from long-term monitoring versus short-term assessment? 
+
+ 
+
+5. Is it possible for an AI-aided yet rule-based design to maintain academic integrity?
+
+
+
+1.9 Assumptions and Constraints
+
+
+
+Constraints and Assumptions
+
+ 
+
+The project has a number of common constraints found in both student level applications and initial production systems, under which the project is running.
+
+ 
+
+1. Quality of input; the formatting of resumes and job descriptions can often lead to extraction inaccuracies.
+
+ 
+
+2. Network variability; real-time interaction performance is very dependent upon whether the client has stable network connections.
+
+ 
+
+3. Domain drift; frequently changing existing technology vocabulary means that ontologies will need written updates on a regular basis.
+
+ 
+
+4. Resource limitations; there will be latency and quota trade-offs when using real-time AI.
+
+ 
+
+5. Evaluation granularity; although rule-based scoring evaluates both structure and relevance accurately, there is considerable under representation for rare instances where experts differ significantly from established norms.
+
+ 
+
+The factors listed above were explicitly noted, so that the results generated from this experiment can be evaluated in a methodologically honest manner.
+
+
+
+1.10 Contributions of the Work
+
+
+
+The principal contributions of this project are summarized below:
+
+
+
+1. A unified architecture integrating resume intelligence, adaptive interviewing, and progress analytics.
+
+2. A transparent multi-metric evaluation framework with interpretable component-level scoring.
+
+3. A skill-gap taxonomy that distinguishes missing knowledge, weak explanation, and insufficient depth.
+
+4. A session orchestration strategy that adapts question flow based on live evidence.
+
+5. A reporting approach that supports both learner reflection and academic review.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CHAPTER 2
+
+
+
+LITERATURE REVIEW AND PROBLEM ANALYSIS
+
+
+
+ 2.1 Existing Approaches
+
+
+
+Current interview preparation systems generally follow one of three models:
+
+
+
+1. Static practice portals with fixed question sets.
+
+2. AI chat systems that provide dynamic text but weak scoring transparency.
+
+3. Coding challenge platforms with limited behavioral/communication evaluation.
+
+
+
+Each model addresses only a subset of interview readiness.
+
+
+
+ 2.2 Research Gap
+
+
+
+A significant gap exists in unifying resume analytics, adaptive questioning, and explainable scoring in a single learning platform. Many solutions optimize interaction but not verifiability.
+
+
+
+Most of the existing systems focus on user engagement and interaction but ignore the requirement for validated and transparent evaluation methods.
+
+ 
+
+Because of this, these systems do not relate to the candidate's profile, their interview performance, and how the candidate receives feedback. The lack of integrated rationale restricts the learner's ability to comprehend the causes of their performance outcomes.
+
+ 
+
+Also, due to their use of opaque or vaguely defined scoring methods, many of these systems do not command trust from users and pose challenges in their ability to verify student performance academically. Without or at least having a system of score calibration, there is no way for the user to make an ongoing evaluation of their progress across multiple uses, nor for them to develop proficiency in specific areas of learning.
+
+ 
+
+In order to address this void, it would be helpful to create a common framework that utilizes contextual understanding, adaptive user interactions, and deterministic evaluation and ultimately encourages sustained performance improvements and repeatable evaluations through effective student performance methods.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 2.3 Comparative Analysis
+
+
+
+
+
+Platform Type
+
+Strength
+
+Limitation
+
+Static Q&A Portals
+
+Broad question coverage
+
+No personalization, no dynamic progression
+
+AI Chat Assistants
+
+Natural conversational flow
+
+Opaque scoring and inconsistent evaluation
+
+Coding Judges
+
+Objective code testing
+
+Weak soft-skill and role-context assessment
+
+PrepWiser/Prepforge (Proposed)
+
+Integrated adaptive 
+
++ explainable model
+
+Requires curated prompts and robust monitoring
+
+
+
+
+
+ 2.4 Problem Decomposition
+
+
+
+To solve the identified gap, the project decomposes interview readiness into measurable subsystems:
+
+
+
+1. Resume intelligence
+
+2. Job requirement extraction
+
+3. Adaptive questioning
+
+4. Multi-metric scoring
+
+5. Skill-gap classification
+
+6. Progress analytics
+
+
+
+
+
+ 2.5 Interview Readiness as a Multi-Dimensional Construct
+
+
+
+Interview readiness should be interpreted as a compound construct rather than a single score. Existing educational and cognitive frameworks indicate that performance under evaluative interaction involves at least four dimensions:
+
+
+
+1. Conceptual mastery of domain knowledge.
+
+2. Retrieval fluency under time pressure.
+
+3. Explanatory coherence in spoken or written form.
+
+4. Meta-cognitive regulation, including confidence and correction behavior.
+
+
+
+Static preparation systems predominantly assess the first dimension through question-answer matching. Conversational settings, however, reveal weaknesses in dimensions two through four. A complete preparation platform must therefore model both knowledge and communication behavior.
+
+2.6  From Static Evaluation to Adaptive Evaluation 
+
+Static assessments provide broad comparability but low personalization. Adaptive assessments, by contrast, alter the difficulty and topical sequence according to candidate responses. In interview contexts, adaptive flow offers two benefits: 
+
+Diagnostic depth: Weak concepts can be probed immediately through follow-up questions. 
+
+Time efficiency: Strong areas receive less redundant testing, allowing broader coverage within the same session duration.
+
+PrepForge implements this principle through state-aware orchestration where question selection is influenced by missed concepts, prior metric scores, and untested role requirements. 
+
+2.7 Explainability in Educational AI
+
+Explainability comes up in important applications of AI, but is just as crucial for education technology applications. Without explainability, learners do not know how to adjust their behavior when scores change. Explainability in PrepForge works by:
+
+Metric decomposition into clarity, relevance, depth, structure, and technical accuracy. 
+
+Explicit weighting per interview context. 
+
+Gap tagging linked to observed response behavior. 
+
+Evidence statements that connect recommendations to specific weaknesses.
+
+This architecture supports reflective learning rather than opaque judgment.
+
+
+
+ 2.8 Resume Analytics and Role Context
+
+
+
+Resume analysis in hiring-adjacent systems generally revolves around keyword overlap. However, keyword presence alone is insufficient because role suitability depends on contextual depth, project framing, and quantifiable outcomes. PrepForge's resume analysis pipeline attempts to move beyond lexical counting by identifying categorized skills, inferred experience signals, and measurable impact phrases. This richer representation improves downstream interview targeting by selecting questions that test not only listed tools but also practical articulation quality.
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+2.9 Skill Gap Taxonomy and Pedagogical Actionability
+
+
+
+Many systems identify weaknesses but fail to classify them meaningfully. A candidate who does not mention a concept at all requires a different intervention than a candidate who mentions it but explains it vaguely. PrepForge operationalizes this distinction through a gap taxonomy: 
+
+ 
+
+ 1. Knowledge-gap. 
+
+ 
+
+2. Explanation-gap. 
+
+ 
+
+3. Depth-gap. 
+
+ 
+
+4. Application-gap. 
+
+ 
+
+5. Resume-missing. 
+
+ 
+
+6. Interview-missing. 
+
+ 
+
+ 
+
+This categorization serves an educational purpose since each category corresponds naturally to a certain remediation approach, for example, concept refinement, storytelling, or application-based learning.
+
+
+
+
+
+ 2.10 Synthesis of Literature Gap
+
+
+
+The literature and platform landscape converge on a central gap: high personalization often comes at the cost of transparency, while high transparency often lacks dynamic adaptation. PrepForge positions itself as a synthesis model where adaptive interaction is retained but evaluation is constrained by explicit rules. This synthesis constitutes the conceptual novelty of the work.
+
+
+
+The work:   
+
+
+
+ Explainable and Fair AI in Recruitment: Proposed System and Literature Survey
+
+
+
+ Literature Survey on Explainable and Fair AI in Recruitment
+
+
+
+In recent years, many organizations are now using AI to help them with their hiring processes. There are approximately 90% of organizations using some form of AI for recruiting and they believe this has made their businesses more efficient. There are also concerns regarding how fairly and transparently these organizations use these AI technologies. On the positive side, AI can help to reduce the amount of “human noise” (or bias) that occurs during decision-making. However, these technologies also could automate the discrimination that occurs today and change what it means to be considered fair in hiring. Fabris et al. indicate that even though removing biased behaviours from hiring by human recruiters is one of the reasons for using AI to recruit talent, whether or not automated hiring using algorithmic systems will be more effective in producing fair outcomes than other more basic methodologies is not yet known. Because of the high-stakes associated with these types of selections, research has been initiated to develop interpretable and bias-controlled AI systems for recruiting.
+
+
+
+
+
+
+
+
+
+ Explainability in Hiring Algorithms
+
+
+
+The article discusses a key area of concern with respect to AI in recruitment - that is, the ability to provide candidates with information about how AI made hiring decisions. The lack of transparency related to hiring AIs can create challenges for accountability, as rejected candidates often do not have a means to determine why they were not selected; furthermore, regulators are concerned that there may be unidentified biases present during the recruitment process. In terms of solutions to these issues, researchers recommend that Explainable AI (XAI) could be utilized. In their study, Fabeyo and co-authors (2023) reviewed the most common XAI methods being applied to assist with hiring decisions. Some of the more popular methods described, include: SHAP, LIME, counterfactuals, and decision trees, and these methods will be able to provide potential candidates with clarification regarding the rationale behind AI’s hiring decisions based on which resume characteristics or keywords were used by the AI in making a particular decision. Evidence suggests that utilizing XAI will increase candidates' understanding of their model(s), and also will assist in the reduction of bias associated with hiring AIs. Conversely, there are limitations that affect the effectiveness of XAI implementation, such as usability and complexity issues; and to assist with ensuring that XAI assists in providing candidates with fairness and transparency when hiring, Fabeyo and co-authors recommend human-centred design principles and a regulatory environment that is supportive.
+
+
+
+ Candidate Perceptions and Trust
+
+
+
+Researchers follow up on AI hiring algorithms by examining candidates' responses to AI used in hiring. Research based on experimental methods indicates that transparency matters, with candidates exhibiting positive attitudes, high levels of trust, and a greater willingness to provide positive word-of-mouth about a company when transparency is present in an ad about an AI used in hiring or when a third party has audited the AI. For instance, Xiong and Kim found evidence that when job candidates are provided with "AI transparency" cues in job advertisements, their levels of trust and willingness to provide positive word-of-mouth about the company were much higher than candidates who were provided with opaque job advertisements. Similarly, Bhattacharya and Verbert found that job seekers viewed the multi-agent, LLM-based recruitment assistant they developed as more functional, trustworthy, and as fairer than job candidates had viewed traditional opaque methods of hiring. These findings suggest that explainability is not merely a technical issue; it also has direct implications for the user experience because providing candidates with an understanding of how AI is used to make decisions will increase perceptions of fairness and confidence in the hiring process, as well as increase likelihood that a candidate will provide a positive referral about the company.
+
+
+
+
+
+ Technical Solutions: Pipelines and Models
+
+
+
+The researchers are creating many different AI frameworks for hiring that focus on interpretability. Khelkhal and Lanasri have created a smart hiring pipeline that extracts resume and job description information using natural language processing techniques (using document parsing and named entity recognition) and then encodes both into a common semantic space. This means that the system can match candidates to roles and explain why there was a match through the inspection of extracted entities (such as skills and qualifications) and their similarity scores. Smart-Hiring has been able to achieve matching accuracy that is competitive with that of other systems while still providing high degrees of interpretability, showing that an end-to-end pipeline can be effective as well as transparent using real-world datasets.
+
+
+
+Another trend is leveraging foundation models (large language models) for recruitment. A recent study evaluated nine LLMs (e.g. LLaMA, Mistral, Phi) on a candidate screening task. These models, even in a zero-shot setting with no fine-tuning, achieved above-chance performance (average AUC > 0.5). Adding a few task examples (few-shot) gave only marginal gains, indicating that LLMs’ pre-training already captures much hiring-related knowledge. Crucially, the study analyzed model outputs with XAI tools and prompt techniques, finding that decisions were largely driven by the LLMs’ pre-learned knowledge. The best LLM (in five-shot mode) came within ~3% accuracy of a task-specific classifier, and all LLMs far outperformed a simple baseline in F1 and recall. This suggests that general-purpose language models can serve as viable, competitive recruiters out-of-the-box, and their reasoning can be probed via explainability methods.
+
+
+
+ Bias Detection and Mitigation
+
+With its usage as a fairness tool, explainability has potential for bias verification amid the hiring process. Alsubaie & Aleisa propose applying SHAP value as a method of exposing bias across several classifiers that include Random Forest, XGBoost, and LightGBM classifiers in a hiring dataset. The investigation illustrated how specific aspect(s) (gender, ethnicity, hobby) disproportionately contributed to having an impact on bias in the model. By iteratively adding and deleting these aspects, the models were rebuilt, resulting in an increase of total accuracy (from approximately 78 percent to 85 percent), as well as the measurement of all precision and recall metrics improved. Furthermore, a 20% increase in fairness (due to improved demographic parity from about .70 to .90) indicates that XAI could be used to help decrease bias through explanation by allowing the user/receiver of the system to identify which inputs might contribute to unfair treatment. The user can then modify the inputs accordingly to create more accurate results, thus creating both more effective and more equitable systems overall. 
+
+ 
+
+Graph-theoretic optimization approaches have also gained popularity over the past few years as a means of improving the fairness of hiring practices.
+
+ The GESA framework utilizes the combination of graph neural networks, transformer embeddings, and adversarial debiasing. And, when tested in a large-scale experiment that matched 20,000 candidates to 3,000 jobs, GESA achieved a matching accuracy of 94.5% within the top three and a significant increase in diverse candidate representation (37%) compared to standard approaches. Furthermore, the GESA fairness metrics from demographic groups produced an average fairness score of .98, while also allowing for quick, understandable results from the overall framework. Overall, GESA demonstrates a holistic strategy for creating equitable hiring processes by leveraging the wide variety of data (transformer embedding + graph neural networks) and guarantees about ensuring equitable candidates are matched with appropriate job positions (fairness constraints) as well as providing explanation of why jobs were matched to certain candidates. Finally, the combination of deep learning technology and equity-focused optimization will enable high-quality results through matching of candidates to positions.
+
+
+
+
+
+
+
+ Survey of Methods and Perspectives
+
+
+
+Several recent surveys contextualize these advances. Mersha et al. (2024) offer a broad XAI review across domains, covering terms, taxonomies of methods, and applications. 
+
+Researchers note that some of the goals of XAI are to be transparent, accountable, and fair. Researchers also categorize different XAI techniques according to how they generate an explanation. Even though this research is targeting general AI, it is another indication that Explainability is increasingly seen as an essential component to the responsible development of AI.
+
+
+
+The systematic review undertaken by Fabeyo (2025) concentrates upon the XAI (eXplainable Artificial Intelligence — (i.e. X previously known as Explainable))in hiring which was discussed above (XAI). Commonly used techniques from XAI (i.e. SHAP (Shapley Additive exPlanations), L.I.M.E (Local Interpretable Model-Agnostic Explanations) and Counterfactuals) are being tested out in recruitment today; but they will not work just because they were developed for solving a problem (in this case recruiting) if there is no more to it than technical solutions. 
+
+ 
+
+In their paper, Fabris et al. (2025) provide a multidisciplinary view of fairness issues in hiring; however, the authors caution that you should not think about algorithmic hiring as being an exclusively optimistic or exclusively pessimistic perspective. Rather, through their database of large data sets and examining how bias can be measured and/or mitigated, and the legal framework that exists at present, the authors will provide a comprehensive examination of the overall pipeline for employment and hopefully help interested parties understand both the potential benefits and limitations of AI on hiring. Finally, concerning future priorities for AI, their recommendations suggest the establishment of an AI system with both a contextual nature and regulated use that balances precision against social responsibility in the recruitment market.
+
+ 
+
+Challenges to XAI remain even though progress has been made, some challenges to overcoming disenfranchisement through XAI still exist. First, many XAI techniques, including most available XAI techniques trade between interpretability and performance. Very complex AI models tend to deny complete explanation, or very complex models may still leave human users struggling with technical descriptions. In addition, scalability and integration are not trivial to integrate into the hiring workflow. Many of the definitions of fairness can change when the use of AI is involved, as also addressed in a previous HBR analysis, where the use of AI in hiring does not automatically create fairness; rather, it converts the definition of fairness to a totally new context.
+
+
+
+The regulation of AI recruiting along with human-centered design has been considered essential. The XAI recruitment survey calls for more structured governance of the platforms and user-oriented interface functionality to ensure that any transparency is really significant. In practice, this could look like work with many different stakeholders during the design of the systems and then providing candidates with easily understood, actionable explanations for any decisions made via automation.  
+
+ 
+
+In conclusion, the most recent projects have shown that using AI's natural language and graph-based methodologies together can produce a high degree of success for many recruiting functions; similarly, using explanation tools are expected to foster trust and reduce instances of discrimination. The literature provides examples of the best outcomes being produced by the development of holistic systems; these systems use technologically advanced, yet interpretable pipelines, along with processes that identify and eliminate any instance of bias from the systems. There appears to be an emphasis on developing AI systems for recruitment, which are both effective in performance and governed so they can be audited and justified to customers.
+
+
+
+ Expanded Literature Context: AI-Driven Recruitment Systems
+
+
+
+ Explainable AI in Hiring Algorithms
+
+The "black box" effect associated with many AI hiring tools has raised significant concern. Numerous studies find that these opaque models do not allow for accountability to workers, such as when an AI resume screener does not provide any rationale for rejecting a candidate. To address these issues, techniques known as Explainable AI (XAI) methods are being used in the recruitment process. Fabeyo's systematic review of the literature identifies common XAI methods currently facilitating hiring decisions (e.g. SHAP, LIME, decision trees, counterfactuals) and assesses these techniques across three domains (interpretability, fidelity, fairness). The findings reveal that XAI improves our understanding as well as helping to reduce bias; however, due to technical complexity and interpretive issues, results in real life may be limited. Therefore, we recommend adopting a human-centered design for XAI, creating appropriate regulatory frameworks that enforce transparency in hiring systems.
+
+
+
+The role of interpretability has also been emphasized in the area of general research on XAI. Recent surveys of the literature indicate that while deep nets and ensemble models can be highly accurate, they do not provide clear reasoning paths that allow for explanation of why conditions have occurred. Survey methods are used to provide post-hoc explanations for conditions (e.g., feature attributions), to use interpretable models, and to provide interactive visualizations of AI outputs to facilitate understanding by humans. Although the majority of reviews of these methods are found across aspects of something like employment, the common finding is that increasing the transparency of the model will promote the establishment of trust in the processes used by these companies to evaluate potential candidates. By providing the key attributes used in making their decisions about hiring (such as skill matching or identified bias), companies can enable both regulators and candidates to better assess the fairness or legality of these AI decisions.
+
+
+
+ Candidate Experience and Trust
+
+Explainability also affects how candidates view the hiring process. Controlled experiments reveal that transparency in the job posting itself is significant. Xiong and Kim say that applicants will trust the company more and form more positive attitudes towards the company when the job posting contains information regarding how AI decisions are made such as how the algorithm used for decisions may be audited by third parties or the use of fairness assurances. Conversely, opaque messaging yields skepticism. Similarly, Bhattacharya and Verbert’s user-centric study of a multi-agent AI system reports that job-seekers perceived the explainable multi-agent system as far more “actionable, trustworthy, and fair” than traditional black-box methods. In short, giving candidates insight into why they were (or were not) shortlisted – whether by AI or humans – improves their acceptance and perception of fairness.
+
+
+
+
+
+ Technical Approaches and Architectures
+
+
+
+The AI recruitment technology in use features many different AI tools/systems developed with interpretability components embedded into them. 
+
+ 
+
+One such tool is called Smart-Hiring. Researchers from Khelkhal and Lanasri have developed an end-to-end Natural Language Processing (NLP) pipeline to parse resumes and job descriptions into structured features (i.e., via named entity recognition, embeddings, and semantic similarity). Unlike other AI recruitment tools, this tool is modular and allows users to view extracted entities (e.g., skills, experience) and their contributions to the match decision. On real hiring data, this system achieved high matching accuracy while maintaining interpretability.
+
+
+
+Foundation (Language) Models: Modern work also investigates using pretrained LLMs for candidate selection. One study evaluated nine large language models (e.g. LLaMA variants, Mistral, Phi) in zero- and few-shot résumé screening. These LLMs, without fine-tuning, achieved above-chance performance (average AUC > 0.5) just from applicants’ document features. Providing a few in-context examples gave only marginal gains, suggesting the LLMs’ pretraining imparts broad hiring-relevant reasoning. The researchers used post-hoc XAI (and prompt analyses) to show that the LLMs’ decisions aligned largely with learned job-related knowledge. Notably, the best LLM nearly matched a task-specific model in accuracy, and all LLMs greatly outperformed a simple baseline in recall and F1 score. This line of work indicates that general-purpose AI can be competitive candidates screeners, with the advantage that their reasoning can be probed via explainability tools.
+
+
+
+Utilizing Graph and Optimization Based Approaches: By using Semantic Embeddings with Graph Neural Networks (GNNS) along with Optimization Techniques, researchers have a more precise method to produce equitable results. Integrating various advanced methodologies into one model via a single collaborative framework called GESA (Graph-Enhanced Semantic Allocation) allows researchers to optimize all methods simultaneously. The methodologies included in GESA are utilizing transformer embedding models, heterogeneous graphs to create GNNs with representation through adversarial learning techniques and finally genetic algorithms to optimally produce allocations. GESA was tested on a large number of candidates (20,000) with a large number of positions (3,000). The results of GESA yielded very high accuracies (94.5% Top 3), as well as much more equitable distribution among candidates (Diversity Increase of 37%) combined with very high Average Fairness Score (0.98). Additionally, GESA produces explainable, glass box results of all allocations produced, thereby making them appropriate for use in both academic and industrial environments. As demonstrated through the use of multiple methodologies and models, GESA provides evidence that by embedding rich candidate-role relationships into a single allocation framework and explicitly creating equitable allocation via optimization techniques produces accurate, equitable, and explorable allocations.
+
+
+
+ Bias Detection and Mitigation
+
+Explainability is additionally applied to diagnose and reduce bias in models. Alsubaie and Aleisa (2025) demonstrate this by using SHAP explanations on AI hiring models (Random Forest, XGBoost, LightGBM). They used SHAP to identify features – such as gender, nationality, hobbies – that disproportionately drove biased outcomes. Thus, they retrained the model multiple times as necessary until a new set of features produced a better fit for the data. The final results were surprising, showing an increase in the model's accuracy from 78% to 85% and a dramatic increase in its fairness score (measured using demographic parity) from approximately .70 to approximately .90 representing a ~20% reduction in bias. Every classification metric improved too, including precision, recall and f1-score. This case study underscores that XAI techniques like SHAP can be practically used to uncover hidden biases and refine hiring algorithms for both higher accuracy and equity.
+
+
+
+In the same way, general fairness research promotes a full-pipeline view of fairness in algorithmic hiring systems. Fabris et al. conducted a multidisciplinary survey that examined the design of algorithms, their sources of bias, and ways to mitigate bias in algorithms (e.g., through legislation concerning the use of algorithms). They express that fairness efforts cannot rely solely on metrics, but rather must also take into consideration the context in which they occur and the perspective of the various stakeholders involved. For example, GESA’s use of adversarial debiasing supports the notion that models should be trained with explicit fairness constraints. Additionally, Smart-Hiring’s emphasis on explaining its decisions aids in the auditing of its models and decisions. 
+
+Using the Two Systems, an Architecture Perspective and an Interpretability Perspective, to Address Fairness 
+
+ 
+
+In the context of the current industry and regulatory environments, there is a growing body of evidence demonstrating that the industry values transparency and explainability of the underlying AI models used in hiring. A recent survey conducted by HireVue of over 4,000 respondents showed that workers feel optimistic about the potential for AI to reduce bias (57% of respondents believe that AI will help to reduce the amount of bias in the hiring process) and 53% of HR leaders state that they will continue using data-driven AI decision-making in 2025. These findings both support academic and other community research that indicates that candidates prefer to participate in hiring processes that are transparent and where HR leaders utilize AI to provide support for their human judgement when making hiring decisions. However, the literature from both surveys also illustrates significant concerns. For example, the HireVue survey indicates growing concerns with misinformation and lack of clarity around the use of artificial intelligence in hiring; the survey also suggests adopting "Transparent AI processes" and improving "clarity of communication around how AI hiring technology is being used.” At the same time, there is literature that emphasizes the need to have stronger governance structures in place to ensure fairness and accountability, including the establishment of regulatory frameworks and standards.
+
+
+
+Troubles Faced in the Future Directions of the Project 
+
+Recommendations for Overcoming Challenges: 
+
+Implementation of Regulatory Bodies for AI Recruitment - Manufacturers of AI should be monitored by independent regulatory bodies to ensure they meet minimum requirements for use of AI in recruitment.
+
+Clarity to Both Candidates and Recruitment Professionals - The AI must provide sufficient transparent information to both candidates and recruitment professionals regarding the source of decision making by the AI.
+
+Complexity vs. Transparency of Performance - The AI must incorporate enough complexity to allow it to use a variety of performance matrices while simultaneously providing transparency into these performance matrices or alternatively building AI's that are interpretable.
+
+Regular Monitoring of Data and Ability to Detect Bias - The AI must incorporate continual monitoring of training data and performance metrics to ensure they are valid and the data being used to develop the AI does not include systematic bias.
+
+Reasons to Pursue this Project 
+
+Reviewing the current literature regarding recruitment using AI indicates there exist several challenges in using AI for recruitment.
+
+ 
+
+The research shows that key issues and unsolved problems continue to exist:
+
+ 
+
+Model complexity vs interpretability: There are many high-performing ML model types (in particular DL and ensemble models) where there is typically a disconnect between performance and interpretability. Bridging that gap is going to be non-trivial and likely result in some level of accuracy degradation when attempting to achieve a level of transparency.
+
+ 
+
+Governance & Ethics: As noted by Fabeyo et al. (2016), there needs to be improvements in the governance of hiring AI (which is more than just a technical solution, there needs to be associated policies which require companies to audit for bias and to explain their decisions to both the regulators and the individuals whom they are making decisions about).
+
+ 
+
+User-centered design: Any explainable system or interface (such as Hiring AI) should be designed with the users of the system in mind. Examples include job-seekers being included in designing interfaces for XAI/ML systems can help create systems perceived by users to be more fair (Bhattacharya & Verbert, 2018). Current and future research should focus on user studies related to how different individuals perceive and interpret algorithmic feedback, as well as determining what types of explanation will be most useful to users.
+
+ 
+
+Data accuracy/bias and audit: Improving data collection and preprocessing should be at the highest priority. The findings of the mitigation studies indicate that conducting regular audits on what features affect decisions should occur as well. Future research areas include dataset cleaning, bias quantification and synthetic data generation to ensure adequate representation.
+
+
+
+The literature reviewed indicates that the best results occur when combining tech innovation (as in different types of AI-based models and XAI tools) along with process-level practices (such as auditing and regulatory processes for both candidate and employer communication). While AI can speed up the hiring process, help create equitable outcomes in hiring, it must be done in a way that is transparent and accountable. There needs to be continued integration of the two dimensions described in this paper in order to achieve recruitment platforms that utilize clear, understandable and humanly-valuable decision-making to create accurate and socially beneficial outcomes.
+
+ 
+
+Recommendations for Overcoming Challenges: 
+
+- Implementation of Regulatory Bodies for AI Recruitment - Manufacturers of AI should be monitored by independent regulatory bodies to ensure they meet minimum requirements for use of AI in recruitment.
+
+
+
+ - Clarity to Both Candidates and Recruitment Professionals The AI must provide sufficient transparent information to both candidates and recruitment professionals regarding the source of decision making by the AI. - Complexity vs. Transparency of Performance 
+
+- The AI must incorporate enough complexity to allow it to use a variety of performance matrices while simultaneously providing transparency into these performance matrices or alternatively building AI's that are interpretable. - Regular Monitoring of Data and Ability to Detect Bias
+
+ - The AI must incorporate continual monitoring of training data and performance metrics to ensure they are valid and the data being used to develop the AI does not include systematic bias. 
+
+
+
+
+
+ Reviewing the current literature regarding recruitment using AI indicates there exist several challenges in using AI for recruitment.
+
+In addition to the above challenges, a number of researchers have established that Explainable AI (XAI) is a necessary component of an AI decision-making process in high-risk industries such as recruitment, and that XAI can provide many benefits to AI-based recruitment systems such as fairness, interpretability, and regulatory compliance. Therefore, the objective of this project is to provide an evidence-based solution for creating an explainable AI recruitment system through an end-to-end explainable AI-based recruitment system.
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CHAPTER 3
+
+
+
+
+
+SYSTEM REQUIREMENTS AND ARCHITECTURE
+
+
+
+
+
+ 3.1 System Overview
+
+
+
+Prepforge is built using a web-based system following a client-server model. The former is responsible for handling human interaction and visualization, whereas the latter focuses on orchestration, evaluation, and persistence.
+
+This paper proposes a recruitment and preparation for an interview system based on AI, NLP, LLMs, and XAI that would increase transparency, fairness, and efficiency of the hiring process.
+
+ 
+
+The system is aimed at overcoming various shortcomings found in the literature, such as transparency, inefficiency of candidate-job pairing, and biases in decision making. Contrary to existing systems which work in a 'black box', our solution follows the human-centered approach, allowing explanations to be easily understood by both candidates and recruiters.
+
+The goal of this project is to provide an explainable AI-based recruitment and interview preparation system that utilizes natural language processing (NLP), large language models (LLMs) and explainable artificial intelligence (XAI) technologies to improve transparency, fairness and efficiency of hiring processes. 
+
+
+
+This will address some of the major limitations of existing research; limitations including lack of transparency, biases in decision making, and inefficient candidate/job matching. While traditional “black box” recruitment systems typically do not allow either candidates or recruiters to know why a particular decision was made, this new approach will use human-centered, explainable and modular design to allow both candidates and recruiters to better understand the reasons behind their decisions.
+
+
+
+ 3.2 Functional Requirements
+
+
+
+ID
+
+Requirement
+
+FR1
+
+User authentication and profile management
+
+FR2
+
+Resume upload, parsing, and ATS-style scoring
+
+FR3
+
+Job description ingestion and requirement extraction
+
+FR4
+
+Adaptive interview session initiation
+
+FR5
+
+Real-time answer submission and evaluation
+
+FR6
+
+Skill-gap detection and prioritization
+
+FR7
+
+Progress tracking across sessions
+
+FR8
+
+Session history and report retrieval
+
+
+
+
+
+
+
+
+
+3.3 Non-Functional Requirements
+
+
+
+ID
+
+Requirement
+
+NFR1
+
+Transparency of scoring logic
+
+NFR2
+
+Scalability for concurrent sessions
+
+NFR3
+
+Reliability of session state management
+
+NFR4
+
+Security for user data and media
+
+NFR5
+
+Maintainability through modular code structure
+
+ 
+
+
+
+ 3.4 Technology Stack
+
+
+
+Frontend: React, Vite, Zustand, Tailwind CSS, Socket.IO Client, Monaco Editor, Recharts  
+
+Backend: Node.js, Express, Socket.IO, Mongoose, JWT, Multer, PDF parsers  
+
+Data Layer: MongoDB  
+
+AI Layer: OpenAI/LLM-based phrasing support (non-deterministic language generation)  
+
+Evaluation Layer: Deterministic formula-based scoring
+
+
+
+ 3.5 High-Level Architecture
+
+
+
+The architecture follows layered separation:
+
+
+
+1. Presentation Layer (UI components and interaction).
+
+2. API Layer (REST + real-time endpoints).
+
+3. Service Layer (orchestration and business logic).
+
+4. Data Layer (models and storage).
+
+5. External Service Layer (LLM, parser utilities).
+
+
+
+
+
+
+
+
+
+
+
+3.6 Security and Governance Considerations
+
+
+
+1. Token-based authentication and protected routes.
+
+2. Input validation and middleware-driven authorization.
+
+3. Rate limiting for API stability.
+
+4. Controlled media/file handling.
+
+
+
+ 3.7 Chapter Summary
+
+
+
+System Architecture and Methodology
+
+
+
+The system that was developed consists of an intelligent architecture which uses multiple modules, and is made up of:
+
+
+
+Resume Intelligence and Parsing ((NLP) Natural Language Processing)
+
+
+
+The resume is processed in numerous formats and the information is compiled into a structure (i.e. skills, experience and accomplishments) by extracting it through Natural Language Processing techniques. This is supported by literature on resume transformation which discuss that for unstructured resumes to be analysable, they need structured representations.
+
+
+
+Semantic Candidate-Job Matching
+
+
+
+The system matches candidates to jobs through the use of semantic embeddings and similarity scoring rather than the traditional keyword approach used previously. Matching by way of semantic embeddings and similarity scoring gets rid of the issues experienced by systems identified as having semantic inflexibility in their matching processes as well as increases the level of accuracy in the matching process.
+
+
+
+Explainable AI Integration (XAI)
+
+
+
+The system provides users with transparency via the inclusion of explanatory techniques; including:
+
+
+
+- Feature importance analysis
+
+- Skill-based contribution scoring
+
+- Interpretable Matching Explanations
+
+
+
+These techniques provide observed evidence to users to assist them in understanding the reasons why a candidate was recommended or rejected, which has been highlighted in the literature as an issue with the lack of transparency exhibited by previous models.
+
+
+
+AI Based Interview Simulation
+
+
+
+The system includes an interview engine that is conversational via the use of LLMs (Language Learning Machines), which provides the following characteristics:
+
+
+
+- Generating questions for the interview that change with each question asked.
+
+- Evaluate candidate’s responses to the questions based upon several different dimensions.
+
+-Provide immediate feedback to the candidate.
+
+
+
+This aspect is similar to recent studies that support the use of LLMs in automated candidate evaluation via an AI-based hiring system.
+
+
+
+Predicting Skills and Making Recommendations to Learn (Skill Gap Analysis) 
+
+
+
+The System is able to determine: 
+
+
+
+- Knowledge Gap 
+
+
+
+- Explanation Gap 
+
+
+
+- Depth Gap 
+
+
+
+And deliver Custom Learning Plans with the intent of providing candidates a path toward continuous improvement. 
+
+
+
+Conducting Live and Providing Feedback in Real Time 
+
+
+
+The System uses WebSocket communication and will support: 
+
+
+
+- Live Interviews 
+
+
+
+- Instant Feedback (e.g. after an interview has concluded) 
+
+
+
+- Continually monitoring Your Performance 
+
+
+
+To improve User Satisfaction and meet current needs of AI-based interactive recruitment systems.
+
+
+
+
+
+ 3.8 Architectural Design Principles
+
+
+
+PrepForge follows explicit design principles to preserve reliability and extensibility:
+
+
+
+1. Separation of concerns across UI, routing, service logic, and persistence.
+
+2. Stateless API operations with stateful interview sessions where necessary.
+
+3. Deterministic score computation for reproducibility.
+
+4. Event-aware real-time communication for interactive flow.
+
+5. Configurable components to avoid role-specific hard-coding.
+
+
+
+ 3.9 Detailed Component View
+
+
+
+The platform is organized into interacting subsystems: 
+
+ 
+
+1. An identity management module designed to verify user credentials and enforce granular access permissions.
+
+ 
+
+2. Resume subsystem for document ingestion, parsing, and scoring. 
+
+ 
+
+3. Job description subsystem for requirement extraction and normalization. 
+
+ 
+
+4. Interview subsystem for stateful turn management. 
+
+ 
+
+5. Evaluation subsystem for metric computation and feedback generation. 
+
+ 
+
+6. Gap analytics subsystem for prioritization and recommendations. 
+
+ 
+
+7. Reporting subsystem for artifact generation and trend summaries. 
+
+ 
+
+This decomposition enables independent testing and targeted future enhancement.
+
+
+
+
+
+ 
+
+
+
+
+
+3.10 Data Model Rationale
+
+
+
+A model-driven backend was selected to ensure schema consistency and explicit data semantics. Major entities include user, resume, job description, interview session, question bank, skill gap, progress history, and generated reports. Relationships between these entities support traceability. For example, each skill gap can be linked to specific session turns and metric failures, preserving evidence lineage.
+
+
+
+
+
+ 3.11 Reliability and Fault Tolerance Considerations
+
+
+
+Real-time interview systems must handle interruptions gracefully. The architecture therefore incorporates:
+
+
+
+1. Session checkpointing at each turn.
+
+2. Recoverable state snapshots for resumed interactions.
+
+3. Defensive route validation against malformed payloads.
+
+4. Error-tolerant parsing workflows for partially extractable documents.
+
+
+
+These safeguards improve user trust by minimizing state loss during unstable conditions.
+
+
+
+ 3.12 Security Posture
+
+
+
+Security controls include token-based authentication, role-aware middleware, controlled upload handling, and rate limiting for abuse prevention. Sensitive artifacts such as candidate content and media metadata are accessed through authenticated route paths. The design aim is practical defense in depth suitable for educational deployment, with clear extension points for stricter enterprise compliance.
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3.13 Architecture Diagram
+
+
+
+
+
+
+
+
+
+
+
+3.14 Workflow Diagram: Session Lifecycle
+
+
+
+
+
+
+
+
+
+CHAPTER 4
+
+
+
+METHODOLOGY AND IMPLEMENTATION
+
+
+
+ 4.1 Development Methodology
+
+
+
+An iterative implementation strategy was followed:
+
+
+
+1. Core backend models and routes.
+
+2. Resume and JD analytics integration.
+
+3. Interview orchestration and adaptive flow.
+
+4. Rule-based evaluation engine.
+
+5. Frontend integration and analytics dashboard.
+
+6. Diagnostics, test routes, and documentation refinement.
+
+
+
+ 4.2 Core Data Models
+
+
+
+The backend includes dedicated schema models for users, interviews, resumes, progress, recommendations, reports, and skill-gaps. The model separation supports extensibility and precise audit trails.
+
+
+
+
+
+
+
+Conventional parsers do not work if a person submits an atypical resume (strict limits of the format). Prep Forge uses a Structure Heuristic Detector to determine the layout of the document in real-time. After extraction, the Named Entity Recognition Engine (NER) matches the text strings with the Skill Ontology Database (i.e., matching 'ReactJS' to 'React') and instead of just checking for the presence of the text, the Pipeline also extracts the syntactical context of the text surrounding the entity (i.e. extracting the phrase '5+ years of' before 'Python') in order to accurately determine the depth of experience.
+
+
+
+ 4.3 Adaptive Interview Orchestration
+
+
+
+The interview session logic maintains state variables such as covered topics, confidence estimate, probing depth, and unresolved gaps. Question selection adapts to:
+
+
+
+1. Required but untested skills from JD.
+
+2. Weakness signals in prior responses.
+
+3. Follow-up conditions triggered by low metric thresholds.
+
+
+
+ 4.4 Evaluation Engine
+
+
+
+A deterministic multi-metric framework evaluates every answer. The current weighted structure is represented as:
+
+
+
+
+
+
+
+
+
+where:C = clarity, R = relevance, D = depth, St = structure, A = technical accuracy.
+
+Example operational weight profile (technical interview mode):
+
+Metric
+
+Symbol
+
+Weight
+
+Clarity
+
+C
+
+0.20
+
+Relevance
+
+R
+
+0.25
+
+Depth
+
+D
+
+0.25
+
+Structure
+
+St
+
+0.15
+
+Technical Accuracy
+
+A
+
+0.15
+
+
+
+
+
+ 4.5 Gap Detection Logic
+
+
+
+Skill-gaps are categorized as:
+
+
+
+1. Knowledge Gap: Missing required concept.
+
+2. Explanation Gap: Concept mentioned, but inadequately explained.
+
+3. Depth Gap: Superficial answer lacking examples/trade-offs.
+
+4. Application Gap: Theory known, practical use weak.
+
+5. Resume-Missing Gap: JD-required skill absent in profile.
+
+6. Interview-Missing Gap: Listed skill not demonstrated in interaction.
+
+
+
+
+
+
+
+
+
+
+
+ 4.6 API and Route Design
+
+
+
+Route Group
+
+Purpose
+
+/api/auth
+
+Authentication and user lifecycle
+
+/api/resume
+
+Resume upload and analysis
+
+/api/interview
+
+Session orchestration and evaluation
+
+/api/liveInterview
+
+Real-time adaptive interview routes
+
+/api/progress
+
+Tracking and analytics
+
+/api/reports
+
+Assessment report generation
+
+
+
+ 
+
+4.7 Frontend Workflow
+
+
+
+The frontend provides:
+
+
+
+1. Guided onboarding for resume and role setup.
+
+2. Interactive interview session with live updates.
+
+3. Skill-gap and trend visualizations.
+
+4. Report review and preparation guidance.
+
+.
+
+
+
+ 4.8 Interview State Transition Model
+
+
+
+Interview flow is governed by state transitions. At a high level, a session moves across initialized, active, paused, and completed states. Each answer submission triggers an evaluation cycle that updates topic coverage, confidence estimates, and unresolved gaps. The next question is selected from a prioritized queue influenced by:
+
+
+
+1. Untested required skills.
+
+2. Previously weak metric regions.
+
+3. Follow-up necessity thresholds.
+
+4. Difficulty balancing rules.
+
+
+
+This approach prevents random questioning and improves diagnostic continuity.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 4.9 Formalized Evaluation Procedure
+
+
+
+Let represent the five metric outputs for a response.
+
+ Let                                          represent their corresponding weights, where ￼. The overall score is computed as:
+
+
+
+Gap detection is then applied as a rule set over metric patterns:
+
+
+
+Thresholds are configurable, enabling calibration across interview modes.
+
+
+
+ 4.10 Adaptive Question Selection Heuristic
+
+
+
+Question selection is implemented as a ranked decision process:
+
+
+
+1. If unresolved critical gaps exist, prioritize probing those gaps.
+
+2. Else if required role skills remain untested, prioritize role alignment.
+
+3. Else if resume claims are unverified, generate verification questions.
+
+4. Else sample from effective question history for balanced coverage.
+
+
+
+This heuristic improves session informativeness and avoids overfitting to any single signal source.
+
+
+
+ 4.11 Prompt Governance and AI Usage Boundaries
+
+
+
+AI services are used for controlled linguistic tasks such as question phrasing and feedback wording. Final scoring and progression decisions remain deterministic. This boundary design is intentional:
+
+
+
+1. It reduces explainability risk.
+
+2. It limits stochastic variance in core evaluation.
+
+3. It supports academic defense where reproducibility is required.
+
+
+
+4.12 Frontend Interaction Design
+
+
+
+The frontend workflow is designed around low-friction progression:
+
+
+
+1. Resume and role context entry.
+
+2. Guided interview initiation.
+
+3. Real-time response entry and feedback reception.
+
+4. Post-session dashboard review with gap-level recommendations.
+
+
+
+Visualizations prioritize interpretability over decorative complexity, emphasizing score trends and actionable next steps.
+
+
+
+ 4.13 Implementation Challenges and Resolutions
+
+
+
+Key implementation challenges included schema evolution across iterative development, balancing latency for real-time interactions, and ensuring consistent scoring under diverse response styles. These were addressed via model normalization, optimized route orchestration, and calibration tests for metric thresholds.
+
+
+
+ 4.14 Workflow Diagram: Evaluation Decision Flow
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4.15 Workflow Diagram: Interview State Transitions
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CHAPTER 5
+
+
+
+
+
+EXPERIMENTAL ANALYSIS AND RESULTS
+
+
+
+
+
+ 5.1 Evaluation Strategy
+
+
+
+System-level validation focused on:
+
+
+
+1. Functional correctness of major workflows.
+
+2. Stability of interview session state transitions.
+
+3. Consistency of deterministic scoring.
+
+4. Utility of generated gap insights.
+
+
+
+ 5.2 Qualitative Observation
+
+
+
+Testing indicates that adaptive sequencing improves response quality in later turns by progressively targeting weak concepts. Candidates receive more actionable feedback compared with static one-shot scoring.
+
+
+
+ 5.3 Sample Session Analysis
+
+
+
+ 
+
+Metric
+
+Attempt 1
+
+Attempt 2
+
+Attempt 3
+
+Clarity
+
+58
+
+68
+
+76
+
+Relevance
+
+54
+
+66
+
+74
+
+Depth
+
+49
+
+61
+
+72
+
+Structure
+
+62
+
+70
+
+79
+
+Technical Accuracy
+
+57
+
+65
+
+75
+
+Overall Score
+
+56
+
+66
+
+75
+
+
+
+ 5.4 Trend Interpretation
+
+
+
+The staged improvement pattern suggests the platform is effective in transforming vague preparedness into structured competence, especially in explanation depth and topical relevance.
+
+
+
+ 5.5 System Strengths (Observed)
+
+
+
+1. Transparent scoring fosters trust and academic defensibility.
+
+2. Adaptive follow-ups reduce shallow answer inflation.
+
+3. Cross-session analytics enable reflective learning.
+
+4. Modular architecture supports incremental extension.
+
+
+
+
+
+
+
+ 
+
+5.6 Limitations (Observed)
+
+
+
+1. Quality depends on resume/JD input quality.
+
+2. Language-model phrasing may vary stylistically.
+
+3. More large-scale benchmarking is needed.
+
+4. Enterprise deployment constraints (cost/security hardening) remain future work.
+
+
+
+ 5.7 Chapter Summary
+
+
+
+The experimental analysis validates functional and pedagogical viability, while also identifying practical constraints for next-phase scaling.
+
+
+
+ 5.8 Experimental Setup
+
+
+
+Evaluation was conducted through scenario-driven testing with multiple synthetic and real-style interview sessions. The setup focused on reproducibility and practical observability rather than large-scale randomized trials. Sessions were configured with varied role contexts to examine whether adaptive behavior remained coherent under changing requirements.
+
+
+
+ 5.9 Metrics for System Evaluation
+
+
+
+System evaluation considered both technical and pedagogical indicators:
+
+
+
+1. Session completion reliability.
+
+2. Stability of state progression under repeated interactions.
+
+3. Deterministic consistency of score outputs.
+
+4. Diversity and relevance of adaptive follow-up prompts.
+
+5. Perceived actionability of gap recommendations.
+
+
+
+ 5.10 Illustrative Trend Case
+
+
+
+A representative candidate trajectory demonstrates staged improvement where depth and relevance scores increase after targeted follow-up rounds. This pattern suggests that immediate weak-area probing can convert passive understanding into explicit articulation. Importantly, improvements were not uniform across all metrics; structure often improved earlier than technical depth, indicating distinct learning dynamics per dimension.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 5.11 Ablation-Style Interpretation
+
+
+
+A conceptual ablation perspective was used to assess subsystem contribution:
+
+
+
+1. Without adaptive sequencing, sessions showed lower diagnostic precision.
+
+2. Without gap taxonomy, recommendations became generic and repetitive.
+
+3. Without deterministic scoring, feedback explainability reduced significantly.
+
+4. Without longitudinal tracking, progress interpretation was fragmented.
+
+
+
+These observations support the integrated architecture hypothesis.
+
+
+
+ 5.12 Error Analysis
+
+
+
+Common failure cases included overly short candidate responses, vague job descriptions with ambiguous skill signals, and highly buzzword-heavy resume inputs. The system mitigates these partially through minimum response heuristics, fallback parsing, and contextual extraction strategies, but some edge cases still require manual interpretation.
+
+
+
+ 5.13 Practical Outcome Summary
+
+
+
+Overall findings indicate that PrepForge is effective as a formative learning companion rather than a definitive hiring decision engine. Its strongest value lies in iterative preparation, explainable diagnostics, and structured confidence building over repeated attempts.
+
+
+
+ 5.14 Additional Tables for Evaluation Rigor
+
+
+
+Interview Mode
+
+Clarity
+
+Relevance
+
+Depth
+
+Structure
+
+Technical Accuracy
+
+Technical
+
+0.20
+
+0.25
+
+0.25
+
+0.15
+
+0.15
+
+Behavioral
+
+0.20
+
+0.20
+
+0.15
+
+0.30
+
+0.15
+
+Mixed
+
+0.20
+
+0.25
+
+0.20
+
+0.20
+
+0.15
+
+
+
+
+
+Gap Type
+
+Typical Symptom
+
+Recommended Intervention
+
+Knowledge-gap
+
+Required concept not mentioned
+
+Foundational topic revision
+
+Explanation-gap
+
+Concept named, weak explanation
+
+Structured answer practice
+
+Depth-gap
+
+Lacks trade-offs/examples
+
+Case-based probing
+
+Application-gap
+
+Theory without implementation context
+
+Project-backed articulation drills
+
+Resume-missing
+
+JD skill absent from profile
+
+Resume update plus learning path
+
+Interview-missing
+
+Claimed skill not demonstrated
+
+Verification rounds and examples
+
+
+
+
+
+Risk
+
+Likelihood
+
+Impact
+
+Mitigation
+
+API latency spikes
+
+Medium
+
+Medium
+
+Retry and queueing strategy
+
+Parsing failures
+
+Medium
+
+High
+
+Fallback extraction pipeline
+
+Unstable sessions
+
+Low
+
+High
+
+State checkpointing
+
+Scoring miscalibration
+
+Medium
+
+Medium
+
+Threshold review and test suites
+
+
+
+
+
+ 5.15 Diagram: Experimental Workflow
+
+
+
+ 
+
+Important Contributions of Project 
+
+
+
+ Comprehensive and Explainable Recruitment System from Beginning to End 
+
+
+
+
+
+The project delivers a full system with elements from parsing resumes to evaluating interviews with every stage being transparent during the hiring process. 
+
+
+
+Integration of XAI for Hiring that Allows to be Fair and Transparent 
+
+
+
+The system has integrated the use of various types of explainability techniques to: 
+
+Increase faith in AI-generated decision-making; 
+
+Decrease Bias;
+
+Increase accountability of AI-generated decision-making. 
+
+This addresses the ethical issues identified in previous research studies. 
+
+
+
+Using LLM's for Intelligent Decision Support in Technology 
+
+
+
+           The system has leveraged LLMs for: 
+
+
+
+Natural Language Understanding; 
+
+
+
+Dynamic Question Generation; and 
+
+
+
+Context-sensitive Evaluation. 
+
+
+
+   This demonstrates the way different foundation models can be practically used within the recruitment process. 
+
+
+
+User-Centred Approach in Human-Computer Interaction (HCI) Design of the System 
+
+The system has been designed for the user to receive: 
+
+
+
+Actionable feedback; 
+
+
+
+Transparent, understandable explanations; and with 
+
+
+
+User-friendly interaction. 
+
+
+
+These features align the system with recently published research related to user trust and experience with HCI within AI systems. 
+
+
+
+Explainability and Removing Bias to Mitigate Bias in Recruiting Practices 
+
+
+
+Through analysis of feature contributions and exclusion of biases from feature attributes, this systems avoids carrying bias across the system and supports the development of recruitment processes that allow for equity in recruiting, as indicated in recent studies.
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+CHAPTER 6
+
+
+
+ DISCUSSION
+
+
+
+ 6.1 Academic Contribution
+
+
+
+PrepForge contributes a practical framework for explainable AI-assisted assessment in employability preparation. Its key strength lies in hybridizing human-readable rules and AI-supported language interaction.
+
+
+
+ 6.2 Engineering Contribution
+
+
+
+From a software systems perspective, the project demonstrates robust integration of:
+
+
+
+1. Real-time communication.
+
+2. Session stateful orchestration.
+
+3. Deterministic scoring models.
+
+4. Data-driven recommendation loops.
+
+
+
+ 6.3 Educational Impact
+
+
+
+The platform promotes active self-correction by linking performance signals to targeted improvement tasks. This shifts interview practice from memorization to iterative competency development.
+
+
+
+ 6.4 Ethics and Fairness Considerations
+
+
+
+The design reduces bias amplification by avoiding direct AI-generated final scoring. Instead, explicit formulas and auditable criteria improve fairness and explainability.
+
+
+
+ 6.5 Discussion Summary
+
+
+
+The project presents an academically defensible and socially useful direction for intelligent career-preparation systems.
+
+
+
+
+
+ 6.6 Theoretical Implications
+
+
+
+The project supports a broader educational insight: explainable assessment and adaptive interaction are complementary, not contradictory. By separating language generation from final scoring logic, systems can remain both engaging and trustworthy. This architecture may inform future educational tools in adjacent domains such as oral exams, technical mentoring, and competency coaching.
+
+
+
+
+
+
+
+ 6.7 Practical Deployment Considerations
+
+
+
+For broader deployment, attention should be given to:
+
+
+
+1. Monitoring AI usage cost under high concurrency.
+
+2. Maintaining role and skill taxonomies as technologies evolve.
+
+3. Standardizing calibration profiles for different interview categories.
+
+4. Integrating privacy and retention controls for institutional compliance.
+
+
+
+ 6.8 Ethical Reflection
+
+
+
+A major ethical concern in AI-supported assessments is unobservable bias. PrepForge reduces this risk by exposing metric breakdowns and explicit rule pathways. Nevertheless, fairness remains an ongoing process rather than a completed state. Future iterations should include bias audits across language styles, educational backgrounds, and communication fluency levels.
+
+
+
+
+
+ 6.9 Threats to Validity
+
+
+
+Interpretation of project outcomes should acknowledge:
+
+
+
+1. Limited population size for empirical validation.
+
+2. Dependence on available role descriptions and candidate inputs.
+
+3. Absence of large-scale inter-rater comparisons with human interviewers.
+
+4. Potential drift in external API behavior over time.
+
+
+
+These constraints do not invalidate the contribution but contextualize it.
+
+
+
+ 6.10 Discussion Closure
+
+
+
+The platform demonstrates a viable middle path between rigid rubric systems and opaque AI judgment engines. This balance is the central design achievement of the work. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Chapter 7
+
+
+
+ CONCLUSION & FUTURE WORK
+
+
+
+7.1  CONCLUSION
+
+
+
+This project designed and implemented PrepForge, a full-stack adaptive interview preparation system that integrates resume intelligence, job-role alignment, dynamic interview orchestration, deterministic multi-metric evaluation, and progress analytics. The work demonstrates that transparent and reproducible scoring can coexist with AI-supported conversational adaptability. 
+
+
+
+The major outcomes achieved are: 
+
+ 
+
+1. End-to-end workflow from resume upload to interview reporting. 
+
+ 
+
+2. Explainable scoring with interpretable component metrics. 
+
+ 
+
+3. Structured skill-gap detection and recommendation capability. 
+
+ 
+
+4. Longitudinal performance analysis across sessions. 
+
+ 
+
+5. Practical architecture suitable for further research and deployment. 
+
+ 
+
+In conclusion, the proposed model presents a breakthrough innovation in the sphere of AI-powered recruitment due to the presence of such elements as Explainable AI, NLP, and communication via LLM. The use of the model ensures not only efficiency and accuracy but also transparency and credibility, which is very important for implementing artificial intelligence in hiring processes.
+
+
+
+ 7.2 FUTURE WORK
+
+
+
+Potential extensions include: 
+
+ 
+
+1. Domain-adaptive scoring profiles for specific industries.
+
+ 
+
+2. A multilingual testing framework, which guarantees standardized test metrics for various language paths.
+
+ 
+
+3. Proctoring processes combined with an integrity monitoring system that would help minimize the risk in high-stakes testing.
+
+ 
+
+4. Explanation templates development, coupled with information retrieval capabilities.
+
+ 
+
+5. Learning-path integration with external course ecosystems. 
+
+ 
+
+6. Large-scale controlled user studies for statistical outcome validation. 
+
+ 
+
+ 
+
+In conclusion, PrepForge lays a solid foundation for next-generation transparent and learner-centered interview-preparation systems.
+
+ 
+
+7.3  Extended Closing Perspective
+
+
+
+The project provides evidence that an interview-preparation system can be implemented as a learning-oriented system as opposed to a simple tool for answering pre-defined interview questions. The focus on learner's evolving interview skills profile instead of his/her score allows users to benefit from evidence-based practices in improving their interview-readiness. At the same time, transparency in assessment practices, coupled with adaptive orchestration of interview questions, makes PrepForge system not only functional but also educationally sound.
+
+ 
+
+The list of future improvements includes controlled comparison of static and adaptive learners' progress, domain-specific validation studies, and multilingual robustness tests. Moreover, further research on feedback explanations, examples based on retrieval strategies, and incorporation of adaptive curricula may convert PrepForge into a holistic employability intelligence system.
+
+
+
+Product :
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Chapter  8
+
+
+
+REFERENCES 
+
+
+
+Cited Works (APA Format)
+
+ 
+
+A Guide to Employment Interview Practices in High Technology Sectors. (2024). Bureau of Labor Statistics - U.S. Department of Labor.
+
+
+
+Architectural Styles and the Design of Networked Software Architectures. (2000). Fielding, R.T. (Doctoral dissertation, University of California, Irvine).
+
+
+
+LGT: GitHub Data on Demand. Gousios, G., Vasilescu, B., Serebrenik, A., and Zaidman, A. (2014). Proceedings of the 11th Working Conference on Mining Software Repositories, pp. 384-387. https://doi.org/10.1145/2597073.2597126
+
+
+
+Long Short Term Memory. Hochreiter and Schmidhuber (1997). Neural Computation, Vol 9, No. 8, pp. 1735-1780. https://doi.org/10.1162/neco.1997.9.8.1735
+
+
+
+Khan Academy. (2023). Personalized Learning Systems and Feedback Loops. https://www.khanacademy.org/
+
+
+
+MongoDB Inc. (2025). MongoDB Documentation. https://www.mongodb.com/docs
+
+
+
+Node.js Foundation. (2025). Node.js API Documentation. https://nodejs.org/docs
+
+
+
+OpenAI. (2025). API Reference Documentation. https://platform.openai.com/docs
+
+
+
+React Team. (2025). React Documentation. https://react.dev/
+
+
+
+Socket.io. (2025). Socket.IO Documentation. https://socket.io/docs/v4
+
+
+
+Cognitive Load During Problem Solving: Effects on Learning. Sweller (1988). Cognitive Science, Vol. 12, No. 2, pp. 257-285. https://doi.org/10.1207/s15516709cog1202
+
+Vite Team. (2025). Vite Guide. Retrieved from Vite’s website: https://vite.dev/guide 
+
+
+
+Zimmerman, B. J. (2002). Becoming a Self-Regulated Learner: An Overview. In Theory into Practice, 41(2), 64-70. Retrieved from: https://doi.org/10.1207/s15430421tip41022 
+
+
+
+Anderson, L. W., & Krathwohl, D. R. (2001). A Taxonomy for Learning, Teaching, and Assessing: A Revision of Bloom’s Taxonomy of Educational Objectives. Longman Publishing Group.
+
+
+
+Bandura, A. (1997). Self-Efficacy: The Exercise of Control. W. H. Freeman.
+
+
+
+Bloom, B. S. (1956). Taxonomy of Educational Objectives: The Classification of Educational Goals. Longmans Green & Co. 
+
+
+
+Chi, M. T. H., Glaser, R., & Farr, M. J. (1988). The Nature of Expertise. Lawrence Erlbaum Associates, Inc.
+
+
+
+Dweck, C. S. (2006). Mindset: The New Psychology of Success. Random House.
+
+
+
+Ericsson, K. A., Krampe, R. T., & Tesch-Romer, C. (1993). The Role of Deliberate Practice in the Acquisition of Expert Performance. Psychological Review, 100(3), 363-406. 
+
+
+
+Goodfellow, I., Bengio, Y., & Courville, A. (2016). Deep Learning. MIT Press. 
+
+
+
+Nielsen, J. (1994). Usability Engineering. Morgan Kaufmann. 
+
+
+
+Pressman, R. S., & Maxim, B. R. (2019). Software Engineering: A Practitioner’s Approach. McGraw-Hill.
+
+
+
+Russell, S., & Norvig, P. (2021). Artificial Intelligence: A Modern Approach. Pearson Education, Ltd.
+
+
+
+Sommerville, I. (2016). Software Engineering. Pearson Education, Ltd.
+
+
+
+Wiggins, G., & McTighe, J. (2005). Understanding by Design. Association for Supervision and Curriculum Development.
+
+
+
+M. Mersha, K. Lam, J. Wood, A. AlShami, and J. Kalita, “Explainable Artificial Intelligence: A Survey of Needs, Techniques, Applications, and Future Direction,” arXiv preprint, 2024.  https://arxiv.org/abs/2409.00265 
+
+
+
+W. Saeed and C. Omlin, “Explainable AI (XAI): A Systematic Meta-Survey of Current Challenges and Future Opportunities,” arXiv preprint, 2021.  https://arxiv.org/abs/2111.06420 
+
+
+
+G. Paliwal et al., “Transformative Impact of Explainable Artificial Intelligence: Bridging Complexity and Trust,” Discover Artificial Intelligence, 2025.  https://link.springer.com/article/10.1007/s44163-025-00281-1 
+
+
+
+R. K. Magham, “Mitigating Bias in AI-Driven Recruitment: The Role of Explainable Machine Learning (XAI),” Int. J. Sci. Res. Comput. Sci. Eng., 2024.  https://ijsrcseit.com/index.php/home/article/view/CSEIT241051037 
+
+
+
+N. Alsubaie and N. Aleisa, “Mitigating Bias in AI Model Using Explainable AI in Hiring Process,” IEEE Access, 2025. 
+
+
+
+V. S. Pendyala, N. B. Thakur, and R. Agarwal, “Explainable Use of Foundation Models for Job Hiring,” Electronics (MDPI), 2025.  
+
+
+
+K. Khelkhal and D. Lanasri, “Smart-Hiring: An Explainable End-to-End Pipeline for CV Information Extraction and Job Matching,” arXiv preprint, 2025.  https://arxiv.org/abs/2511.02537 
+
+
+
+R. A. Shah et al., “GESA: Graph-Enhanced Semantic Allocation for Generalized, Fair, and Explainable Candidate-Role Matching,” arXiv preprint, 2025.  https://arxiv.org/abs/2509.25435 
+
+
+
+M. Myneni and F. Quadhari, “Hybrid Transformer-Based Resume Parsing and Job Matching Using SBERT and DeBERTa,” SSRG Int. Journal, 2025. 
+
+
+
+A. Bhattacharya and K. Verbert, “Let’s Get You Hired: A Job Seeker’s Perspective on Multi-Agent Recruitment Systems,” ACM UIST, 2025. 
+
+
+
+Z. Cheng et al., “A Comprehensive Review of Explainable AI in Computer Vision,” Sensors (MDPI), 2025. 
+
+
+
+“Optimizing Student Job Placements with NLP and Explainable AI: A Fair and Transparent Hiring Framework,” Array (Elsevier), 2026.  https://doi.org/10.1016/j.array.2026.100729 
+
+
+
+V. Zadykian et al., “Towards Explainable Job Title Matching Using Knowledge Graphs,” arXiv preprint, 2025.
+
+
+
+ C. Xue and Z. Gao, “Structured Contrastive Learning for Context-Aware Text Semantic Matching,” arXiv preprint, 2025. 
+
+
+
+H. Eshkiki et al., “A Survey of Explainable AI in Biomedical Informatics,” Applied Sciences (MDPI), 2025.  https://www.mdpi.com/2076-3417/15/24/12934 
+
+
+
+ CHAPTER 9
+
+
+
+ APPENDICES
+
+
+
+ APPENDIX 1: FORMAT COMPLIANCE SHEET (VIT)
+
+
+
+- Paper size: A4
+
+- Left margin: 3.81 cm
+
+- Right margin: 2.54 cm
+
+- Top margin: 2.54 cm
+
+- Bottom margin: 2.54 cm
+
+- Font: Times New Roman, 12 pt (main text)
+
+- Chapter heading: 16 pt, bold
+
+- Section heading: 14 pt, CAPS
+
+- Subsection heading: 12 pt, CAPS
+
+- Line spacing: 1.5 throughout (single spacing allowed for captions/TOC/list pages)
+
+- Page numbering: Arabic numerals at bottom center
+
+- Cover binding: Flexible white art paper
+
+- Recommended page count: 60 to 100 pages
+
+
+
+
+
+ APPENDIX 2: CHAPTER-WISE CONTENT EXPANSION GUIDE (FOR 60-100 PAGE SUBMISSION)
+
+
+
+To meet institutional page targets without artificial padding:
+
+
+
+1. Expand Chapter 2 with at least 12 to 20 peer-reviewed sources and critical comparison.
+
+2. Add architecture and workflow diagrams in Chapter 3 and Chapter 4.
+
+3. Include module-wise pseudo-code and data schema snapshots in Chapter 4.
+
+4. Add experiment design, test scenarios, and benchmark tables in Chapter 5.
+
+5. Include error analysis, failure cases, and mitigation strategies in Chapter 6.
+
+
+
+ APPENDIX 3: KEY MODULE INDEX OF PREPFORGE CODEBASE
+
+
+
+Server-side modules include authentication middleware, route handlers, interview orchestration, dynamic evaluation engine, resume/JD analysis, and persistence models for interviews, reports, and progress tracking.
+
+
+
+Client-side modules include pages for resume analysis, interview sessions, progress dashboards, and reusable components/hooks for data flow and user interaction.
+
+
+
+
+
+
+
+
+
+
+
+
+
+ APPENDIX 4: DECLARATION AND CERTIFICATE SIGN-OFF CHECKLIST
+
+
+
+- Candidate signature completed
+
+- Guide signature completed
+
+- Internal and external examiner fields completed
+
+- Program Chair and Dean approval fields completed
+
+- Date and place fields completed
+
+- External guide certificate included if applicable
+
+
+
+APPENDIX 5: API ENDPOINT SAMPLES
+
+
+
+ A5.1 Start Live Interview
+
+
+
+Request
+
+
+
+```json
+
+POST /api/interview/live/start
+
+{
+
+    "userId": "<USERID>",
+
+    "resumeId": "<RESUMEID>",
+
+    "jobDescriptionId": "<JDID>",
+
+    "interviewType": "technical"
+
+}
+
+```
+
+
+
+Response
+
+
+
+```json
+
+{
+
+    "sessionId": "<SESSIONID>",
+
+    "status": "active",
+
+    "question": {
+
+        "text": "Explain virtual DOM and reconciliation in React.",
+
+        "topic": "React",
+
+        "difficulty": "mid"
+
+    }
+
+}
+
+```
+
+
+
+
+
+ A5.2 Submit Answer
+
+
+
+```json
+
+POST /api/interview/live/<SESSIONID>/answer
+
+{
+
+    "answerText": "Virtual DOM is a lightweight in-memory representation..."
+
+}
+
+```
+
+
+
+ APPENDIX 6: DATA MODEL SNAPSHOTS AND SCHEMA RATIONALE
+
+
+
+ A6.1 Interview Session (Conceptual)
+
+
+
+```text
+
+InterviewSession
+
+- sessionId
+
+- userId
+
+- status
+
+- context(resumeId, jdId, role, interviewType)
+
+- turns[]
+
+  - question
+
+  - answer
+
+  - metrics
+
+  - overallScore
+
+- identifiedGaps[]
+
+- finalSummary
+
+```
+
+
+
+Rationale: session-level aggregation enables replay, trend analysis, and auditability.
+
+
+
+
+
+
+
+
+
+ APPENDIX 7: INTERVIEW TRANSCRIPT EXEMPLAR WITH METRIC ANNOTATIONS
+
+
+
+Question: Explain ACID properties in database transactions.  
+
+Candidate Answer (excerpt): Atomicity ensures all operations complete together or rollback happens...  
+
+Metrics: Clarity 74, Relevance 82, Depth 63, Structure 71, Technical Accuracy 78.  
+
+Detected Gaps: Depth-gap (insufficient real-world failure case discussion).
+
+
+
+ APPENDIX 8: TEST CASE CATALOG AND VALIDATION CHECKLIST
+
+
+
+ 
+
+Test ID
+
+Scenario
+
+Expected Outcome
+
+Status
+
+TC-01
+
+Valid resume upload
+
+Structured extraction
+
+Pass
+
+TC-02
+
+Malformed PDF upload
+
+Graceful error response
+
+Pass
+
+TC-03
+
+Start interview without auth
+
+401 unauthorized
+
+Pass
+
+TC-04
+
+Submit short answer
+
+Low depth + follow-up
+
+Pass
+
+TC-05
+
+Session reconnect
+
+State restored
+
+Pass
+
+
+
+
+
+Checklist:
+
+
+
+1. Authentication middleware enforced.
+
+2. Required payload fields validated.
+
+3. Session writes persisted per turn.
+
+4. Gap creation logic idempotent.
+
+5. Final report generated post-completion.
+
+
+
+ APPENDIX 9: FAILURE SCENARIOS AND TROUBLESHOOTING GUIDE
+
+
+
+1. Issue: AI response timeout.  
+
+     Action: Retry with exponential backoff and fallback phrasing.
+
+
+
+2. Issue: Resume parse incomplete.  
+
+     Action: Fallback extractor + manual section validation.
+
+
+
+3. Issue: Session disconnect during answer submission.  
+
+     Action: Recover from latest persisted turn state.
+
+
+
+
+
+
+
+
+
+
+
+ APPENDIX 10: DEPLOYMENT NOTES AND ENVIRONMENT CONFIGURATION MATRIX
+
+
+
+
+
+ 
+
+Environment
+
+
+
+Frontend
+
+
+
+Backend
+
+
+
+Database
+
+
+
+Notes
+
+
+
+Local Dev
+
+Vite
+
+Node.js
+
+Local MongoDB
+
+Fast iteration
+
+Staging
+
+Built assets
+
+PM2/Node
+
+Managed MongoDB
+
+QA and integration
+
+Production
+
+CDN + build
+
+Node cluster
+
+Managed MongoDB
+
+Monitoring required
+
+
+
+
+
+Core environment variables:
+
+
+
+```env
+
+PORT=5000
+
+MONGODBURI=<uri>
+
+JWTSECRET=<secret>
+
+OPENAIAPIKEY=<key>
+
+VITEAPIURL=<url>
+
+
+
+
+
+Project structure:
+
+
+
+
+
+prepwiser/
+
+├── server/
+
+│   ├── models/          # Mongoose schemas
+
+│   ├── routes/          # Express route handlers
+
+│   ├── services/        # Business logic
+
+│   ├── middleware/      # Authentication, validation
+
+│   ├── sockets/         # WebSocket handlers
+
+│   └── config/          # Configuration files
+
+├── src/
+
+│   ├── components/      # React components
+
+│   ├── pages/           # Route-level components
+
+│   ├── services/        # API service layer
+
+│   ├── hooks/           # Custom React hooks
+
+│   ├── store/           # Zustand stores
+
+│   └── utils/           # Utility functions
+
+└── uploads/             # Media storage
+
+
+
+
+
+
+
+ APPENDIX 11: USER MANUAL (STEP-BY-STEP)
+
+
+
+1. Register/login to the platform.
+
+2. Upload resume and verify parsed sections.
+
+3. Add target role/job description.
+
+4. Start live interview session.
+
+5. Submit answers turn-by-turn and review feedback.
+
+6. Complete interview and inspect final report.
+
+7. Follow recommended skill-gap roadmap.
+
+8. Repeat session for measurable improvement.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CORE ARCHITECTURAL PRINCIPLES
+
+Zero Hard-Coding: All data from database, user input, or computed logic
+
+Real-Time State Management: Interview sessions maintain live state
+
+Event-Driven: Actions trigger state updates and persistence
+
+Rule-Based Evaluation: All scoring uses transparent formulas
+
+Audit Trail: Every decision logged for academic defense
+
+
+
+
+
+LAYERED ARCHITECTURE
+
+┌─────────────────────────────────────────────────│                     PRESENTATION LAYER                         ├─────────────────────────────────────────────────│ React Components (Real-Time UI)│ - ResumeUploadFlow (drag-drop, parsing, scoring display)        │ - JDInputFlow (paste JD, extract requirements, show match)      │ - InterviewLobby (type selection, context setup, readiness)     │ - LiveInterviewSession (question, answer, real-time feedback)   │ - SkillGapDashboard (visual gap analysis, recommendations)      │ - ProgressAnalytics (charts, trends, history)                   │ - InterviewReplay (session review, comparison)                  │ - CodingSimulator (editor, test cases, execution)               └─────────────────────────────────────────────────                  HTTP/WebSocket┌─────────────────────────────────────────────────│                       API GATEWAY LAYER                          ├─────────────────────────────────────────────────│ Express.js Routes (RESTful + WebSocket)                         │ /api/resume/*          - Resume operations                     │ /api/jd/*              - Job description operations             │ /api/interview/*       - Interview session management           │ /api/evaluation/*      - Evaluation & scoring                  │ /api/coding/*          - Coding challenge operations            │ /api/progress/*        - Analytics & tracking                  │ /api/reports/*         - Report generation                      └─────────────────────────────────────────────────                             ↓┌─────────────────────────────────────────────────│                     BUSINESS LOGIC LAYER                         ├─────────────────────────────────────────────────│ Service Orchestrators (NO HARD-CODED DATA)                      │                                                                  │ ResumeService:                                                   │   - parseResume(buffer) → structured data                       │   - calculateATSScore(resume) → score breakdown                 │   - extractSkills(text) → categorized skills array              │                                                                  │ JDService:                                                       │   - parseJobDescription(text) → requirements                    │   - matchResumeToJD(resume, jd) → match analysis               │   - identifySkillGaps(resume, jd) → gap classification          │                                                                  │ InterviewOrchestrator:                                          │   - initializeSession(userId, type, context) → session          │   - selectNextQuestion(session, history) → question             │   - evaluateAnswer(question, answer) → evaluation              │   - determineFollowUp(evaluation) → boolean + reason            │   - updateSessionState(session, turn) → updated session        │                                                                 │ QuestionGenerationService:                                       │   - generateFromSkills(skills, difficulty) → question           │   - generateFromGaps(gaps, topic) → targeted question           │   - generateFollowUp(answer, issue) → probing question          │                                                                  │ EvaluationEngine:                                                │   - evaluateTechnicalAnswer(q, a) → multi-metric score          │   - evaluateBehavioralAnswer(q, a) → STAR analysis              │   - evaluateCodingSubmission(code, tests) → correctness + style │   - aggregateInterviewScores(turns) → final evaluation          │                                                                  │ SkillGapAnalyzer:                                                │   - analyzeKnowledgeGaps(resume, interview) → knowledge gaps    │   - analyzeExplanationGaps(resume, interview) → interview gaps  │   - prioritizeGaps(gaps) → ordered improvement list             │                                                                  │ ProgressTracker:                                                 │   - recordAttempt(userId, session) → progress entry             │   - calculateTrends(userId) → trend analysis                    │   - generateRoadmap(gaps, progress) → personalized plan         │                                                                 │ ReportGenerator:                                                 │   - compileReport(userId, sessionIds) → report data             │   - generatePDF(reportData) → PDF buffer                        └────────────────────────────────────────────────                              ┌─────────────────────────────────────────────────│                       DATA ACCESS LAYER                          ├─────────────────────────────────────────────────│ MongoDB Models (Mongoose Schemas)                               │                                                                  │ User: authentication, profile, preferences                      │ ParsedResume: structured resume data, ATS scores                │ JobDescription: parsed JD, requirements, metadata               │ InterviewSession: state, turns, evaluations, analytics          │ QuestionBank: dynamically generated questions (cached)          │ SkillGap: identified gaps, evidence, severity                  │ InterviewProgress: attempts, scores, trends                    │ CodingChallenge: problems, test cases, submissions           │ InterviewReport: generated reports, PDF metadata             └─────────────────────────────────────────────────                              ┌─────────────────────────────────────────────────│                     EXTERNAL SERVICES LAYER                              ├─────────────────────────────────────────────────│ OpenAI GPT-4: Question phrasing, feedback wording (NOT scoring) │ PDF Parser: Extract text from resume files                      │ Code Executor: Sandbox for running submitted code (Docker)      │ PDF Generator: Create professional reports (PDFKit)             └─────────────────────────────────────────────────
+
+      
+
+DATA FLOW: REAL-TIME INTERVIEW SESSION
+
+
+
+
+
+
+
+
+
+
+
+EVALUATION PIPELINE (RULE-BASED)
+
+
+
+
+
+Answer Text Input
+
+      ↓
+
+┌─────────────────────────┐
+
+│ Preprocessing                                               
+
+│ - Tokenization          
+
+│ - Lowercasing           
+
+│ - Stop word removal     
+
+└────────┬────────────────┘
+
+                          ↓
+
+┌─────────────────────────┐
+
+│ Multi-Metric Analysis                                │
+
+├─────────────────────────┤
+
+│ 1. Clarity                                                      
+
+│    - Word count         
+
+│    - Sentence length    
+
+│    - Readability score  
+
+├─────────────────────────┤
+
+│ 2. Relevance            
+
+│    - Keyword matching   
+
+│    - Topic coherence    
+
+│    - Context alignment  
+
+├─────────────────────────┤
+
+│ 3. Depth                
+
+│    - Concept coverage   
+
+│    - Example presence   
+
+│    - Detail level       
+
+├─────────────────────────┤
+
+│ 4. Structure            
+
+│    - Logical flow       
+
+│    - STAR pattern (HR)  
+
+│    - Intro-body-conclusion 
+
+├─────────────────────────┤
+
+│ 5. Technical Accuracy   
+
+│    - Concept detection  
+
+│    - Trade-off mention  
+
+│    - Use case awareness 
+
+└────────┬────────────────┘
+
+                          ↓
+
+┌─────────────────────────┐
+
+│ Weighted Aggregation    
+
+│ Score = Σ(metric × w)   
+
+└────────┬────────────────┘
+
+                          ↓
+
+┌─────────────────────────┐
+
+│ Gap Detection           
+
+│ - Missing concepts      
+
+│ - Weak explanations                                   
+
+│ - Vague reasoning                                        |
+
+└────────┬────────────────┘
+
+                          ↓
+
+┌─────────────────────────┐
+
+│ Feedback Generation     
+
+│ - Score breakdown       
+
+│ - Specific improvements 
+
+│ - Example comparisons   
+
+└─────────────────────────┘
+
+
+
+STATE MANAGEMENT (INTERVIEW SESSION)
+
+
+
+InterviewSession {
+
+  sessionId: UUID
+
+  userId: ObjectId
+
+  status: enum [initialized, active, paused, completed]
+
+  
+
+  context: {
+
+    resumeId: ObjectId
+
+    jobDescriptionId: ObjectId
+
+    targetRole: String (from JD)
+
+    candidateSkills: [String] (from resume)
+
+    requiredSkills: [String] (from JD)
+
+    interviewType: enum [hr, technical, coding, mixed]
+
+  }
+
+  
+
+  state: {
+
+    currentTurn: Number
+
+    topicsCovered: [String]
+
+    skillsProbed: [String]
+
+    difficultyLevel: enum [entry, mid, senior]
+
+    confidenceEstimate: Number (0-100)
+
+    strugglingAreas: [String]
+
+    strongAreas: [String]
+
+  }
+
+  
+
+  turns: [{
+
+    turnNumber: Number
+
+    question: {
+
+      text: String
+
+      type: String
+
+      topic: String
+
+      difficulty: String
+
+      expectedConcepts: [String]
+
+      generatedFrom: enum [skill, gap, follow-up]
+
+      parentTurn: Number (if follow-up)
+
+    }
+
+    answer: {
+
+      text: String
+
+      submittedAt: Date
+
+      timeSpent: Number (seconds)
+
+      wordCount: Number
+
+    }
+
+    evaluation: {
+
+      metrics: {
+
+        clarity: Number (0-100)
+
+        relevance: Number (0-100)
+
+        depth: Number (0-100)
+
+        structure: Number (0-100)
+
+        technicalAccuracy: Number (0-100)
+
+      }
+
+      overallScore: Number (0-100)
+
+      detectedConcepts: [String]
+
+      missedConcepts: [String]
+
+      gaps: [{
+
+        type: enum [knowledge, explanation, depth]
+
+        concept: String
+
+        severity: enum [high, medium, low]
+
+        evidence: String
+
+      }]
+
+      feedback: String
+
+      needsFollowUp: Boolean
+
+      followUpReason: String
+
+    }
+
+  }]
+
+  
+
+  finalEvaluation: {
+
+    overallScore: Number
+
+    categoryScores: {
+
+      technicalKnowledge: Number
+
+      communication: Number
+
+      problemSolving: Number
+
+      depth: Number
+
+    }
+
+    identifiedGaps: [SkillGap]
+
+    readinessScore: Number
+
+    recommendations: [String]
+
+  }
+
+  
+
+  analytics: {
+
+    totalTurns: Number
+
+    followUpCount: Number
+
+    averageScore: Number
+
+    averageResponseTime: Number
+
+    topicDistribution: Object
+
+  }
+
+}
+
+
+
+
+
+DYNAMIC QUESTION GENERATION STRATEGY
+
+
+
+NO hard-coded questions. Questions generated from:
+
+
+
+Skill-Based Generation
+
+
+
+Extract skills from resume
+
+For each skill, generate concept verification questions
+
+Use GPT-4 for phrasing, NOT content
+
+
+
+Gap-Based Generation
+
+
+
+Identify weak areas from previous answers
+
+Generate targeted questions to probe deeper
+
+Focus on missed concepts
+
+
+
+Follow-Up Generation
+
+
+
+Detect shallow/vague answers
+
+Generate "Can you explain..." or "Can you provide an example..." questions
+
+Reference specific weakness
+
+
+
+JD-Aligned Generation
+
+
+
+Parse required skills from job description
+
+Generate questions testing those specific skills
+
+Prioritize missing skills from resume
+
+
+
+
+
+EVALUATION FORMULA TRANSPARENCY
+
+
+
+Turn Score = (
+
+  clarity × 0.20 +
+
+  relevance × 0.25 +
+
+  depth × 0.25 +
+
+  structure × 0.15 +
+
+  technicalAccuracy × 0.15
+
+)
+
+ 
+
+
+
+
+
+
+
+
+
+where:
+
+  clarity = f(wordCount, sentenceLength, readability)
+
+  relevance = (detectedConcepts ∩ expectedConcepts) / expectedConcepts
+
+  depth = hasExample + hasTradeOff + hasUseCase + detailLevel
+
+  structure = hasIntro + logicalFlow + hasConclusion
+
+  technicalAccuracy = correctConcepts / totalConcepts
+
+
+
+REAL-TIME REQUIREMENTS
+
+
+
+WebSocket for Live Interviews
+
+Bidirectional communication
+
+Real-time evaluation feedback
+
+Progress indicators
+
+State Persistence
+
+Every turn auto-saved
+
+Session resumable
+
+Crash recovery
+
+Progressive Enhancement
+
+Works without JS (basic)
+
+Enhanced with real-time features
+
+
+
+
+
+
+
+GITHUB: https://github.com/Sathvik2005/Prepforge
+
+
+

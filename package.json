@@ -1,0 +1,17 @@
+{
+  "name": "legaleasy-saas",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": ["packages/*", "apps/*"],
+  "scripts": {
+    "dev:api": "npm run dev -w @legaleasy/api",
+    "dev:worker": "npm run dev -w @legaleasy/worker",
+    "dev:web": "npm run dev -w @legaleasy/web",
+    "test": "npm run test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "tsx": "^4.19.1"
+  }
+}
