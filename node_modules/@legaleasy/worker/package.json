@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "bullmq": "^5.8.3"
+    ,"@sanity/client": "^3.1.0"
   },
   "devDependencies": {
     "tsx": "^4.19.1"

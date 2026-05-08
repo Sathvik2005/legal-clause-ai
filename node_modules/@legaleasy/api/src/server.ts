@@ -7,6 +7,7 @@ import swagger from '@fastify/swagger'
 import swaggerUI from '@fastify/swagger-ui'
 import { z } from 'zod'
 import { randomUUID } from 'node:crypto'
+import { createDocumentInSanity, /* createAnalysisInSanity, */ patchDocumentStatusInSanity } from './lib/sanityClient'
 
 type DB = {
   documents: Array<any>
@@ -118,6 +119,14 @@ async function main() {
 
       db.documents.push({ id, title: title ?? null, originalName: filename, mimeType: mimetype, filePath, textPath, status: 'uploaded', createdAt: new Date().toISOString() })
       saveDB(db)
+      // persist to Sanity if configured (non-blocking)
+      if (process.env.SANITY_PROJECT_ID && process.env.SANITY_API_TOKEN) {
+        try {
+          void createDocumentInSanity({ id, title: title ?? null, originalName: filename, mimeType: mimetype, filePath, textPath, status: 'uploaded', createdAt: new Date().toISOString() })
+        } catch (err) {
+          app.log.error('sanity create document failed', err)
+        }
+      }
       return reply.code(201).send({ documentId: id })
     }
 
@@ -138,6 +147,13 @@ async function main() {
     if (!doc) return reply.code(404).send({ error: 'document not found' })
     doc.status = 'processing'
     saveDB(db)
+    if (process.env.SANITY_PROJECT_ID && process.env.SANITY_API_TOKEN) {
+      try {
+        void patchDocumentStatusInSanity(id, 'processing')
+      } catch (err) {
+        app.log.error('sanity patch status failed', err)
+      }
+    }
     if (queueMode() === 'bullmq') {
       const { Queue } = await import('bullmq')
       const queue = new Queue('document-analysis', { connection: { url: process.env.REDIS_URL } })

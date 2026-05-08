@@ -109,6 +109,55 @@
       "textPath": "e:\\hackthons\\lgal docs and evals\\data\\uploads\\63be577c-063d-47f8-92d1-ee3aba973550.txt",
       "status": "analyzed",
       "createdAt": "2026-05-05T10:30:52.657Z"
+    },
+    {
+      "id": "a0e39216-6787-42c0-892b-589c1e673858",
+      "title": "E2E Test",
+      "textPath": "e:\\hackthons\\lgal docs and evals\\data\\uploads\\a0e39216-6787-42c0-892b-589c1e673858.txt",
+      "status": "analyzed",
+      "createdAt": "2026-05-08T14:20:46.619Z"
+    },
+    {
+      "id": "f3a8a9d6-cd65-4d1d-a5df-95a737ccf395",
+      "title": "E2E Test",
+      "textPath": "e:\\hackthons\\lgal docs and evals\\data\\uploads\\f3a8a9d6-cd65-4d1d-a5df-95a737ccf395.txt",
+      "status": "analyzed",
+      "createdAt": "2026-05-08T14:22:38.081Z"
+    },
+    {
+      "id": "adee98c0-d4ea-4425-b595-e9e48e065212",
+      "title": "Simple Indemnity Clause",
+      "textPath": "e:\\hackthons\\lgal docs and evals\\data\\uploads\\adee98c0-d4ea-4425-b595-e9e48e065212.txt",
+      "status": "processing",
+      "createdAt": "2026-05-08T18:43:21.319Z"
+    },
+    {
+      "id": "484b4bb9-f8c1-46db-a9c8-1022dc12e3f4",
+      "title": "Simple Indemnity Clause",
+      "textPath": "e:\\hackthons\\lgal docs and evals\\data\\uploads\\484b4bb9-f8c1-46db-a9c8-1022dc12e3f4.txt",
+      "status": "analyzed",
+      "createdAt": "2026-05-08T18:48:05.275Z"
+    },
+    {
+      "id": "9bb05d21-713d-471c-af8a-d440e0f8af09",
+      "title": "SaaS Service Agreement",
+      "textPath": "e:\\hackthons\\lgal docs and evals\\data\\uploads\\9bb05d21-713d-471c-af8a-d440e0f8af09.txt",
+      "status": "analyzed",
+      "createdAt": "2026-05-08T18:48:05.865Z"
+    },
+    {
+      "id": "54216212-db2f-4c56-9043-19677b41a538",
+      "title": "Simple Indemnity Clause",
+      "textPath": "e:\\hackthons\\lgal docs and evals\\data\\uploads\\54216212-db2f-4c56-9043-19677b41a538.txt",
+      "status": "analyzed",
+      "createdAt": "2026-05-08T18:50:23.261Z"
+    },
+    {
+      "id": "b1ddcb4c-4ed4-467a-978e-fb18d7b6987c",
+      "title": "SaaS Service Agreement",
+      "textPath": "e:\\hackthons\\lgal docs and evals\\data\\uploads\\b1ddcb4c-4ed4-467a-978e-fb18d7b6987c.txt",
+      "status": "analyzed",
+      "createdAt": "2026-05-08T18:50:23.853Z"
     }
   ],
   "analyses": [
@@ -18118,6 +18167,376 @@
       "promptVersion": "v1",
       "modelVersion": "rules+heuristic",
       "createdAt": "2026-05-05T10:30:52.694Z"
+    },
+    {
+      "id": "862c18d6-f7bd-4445-a9f9-681784a65ae1",
+      "documentId": "a0e39216-6787-42c0-892b-589c1e673858",
+      "riskScore": 35.6,
+      "flags": [
+        {
+          "id": "cb70d173-c542-468d-8851-c026592f76b6",
+          "clauseId": "7300acb1-18e2-486c-a00e-93eb5c73964f",
+          "reason": "Party A shall indemnify Party B.",
+          "confidence": 0.74,
+          "evidence": [
+            {
+              "snippet": "Party A shall indemnify Party B."
+            }
+          ],
+          "scoreContribution": 0.36000000000000004
+        }
+      ],
+      "clauseCount": 1,
+      "promptVersion": "v1",
+      "modelVersion": "rules+heuristic",
+      "createdAt": "2026-05-08T14:21:17.621Z"
+    },
+    {
+      "id": "74eb8747-8207-4f24-9b0c-1645bc866001",
+      "documentId": "f3a8a9d6-cd65-4d1d-a5df-95a737ccf395",
+      "riskScore": 35.6,
+      "flags": [
+        {
+          "id": "005f0e95-2b0a-4d05-94e1-4157fdfcef33",
+          "clauseId": "9a79be19-5411-4276-a77b-e4e2c9765e09",
+          "reason": "Party A shall indemnify Party B.",
+          "confidence": 0.74,
+          "evidence": [
+            {
+              "snippet": "Party A shall indemnify Party B."
+            }
+          ],
+          "scoreContribution": 0.36000000000000004
+        }
+      ],
+      "clauseCount": 1,
+      "promptVersion": "v1",
+      "modelVersion": "rules+heuristic",
+      "createdAt": "2026-05-08T14:22:38.129Z"
+    },
+    {
+      "id": "d9d2d466-d66c-4f29-8cf3-693e649a13ec",
+      "documentId": "484b4bb9-f8c1-46db-a9c8-1022dc12e3f4",
+      "riskScore": 43.4,
+      "flags": [
+        {
+          "id": "c02587b1-e489-4f2f-ae43-4e8d85c00da6",
+          "clauseId": "20a400a1-9af3-4a06-9a80-f420a7faa085",
+          "fingerprint": "573c4378372c9af003af836f91baab269eba5ef05f630ac676e69079eb728ad9",
+          "reason": "Party A shall indemnify Party B.",
+          "confidence": 0.74,
+          "evidence": [
+            {
+              "snippet": "Party A shall indemnify Party B."
+            }
+          ],
+          "scoreContribution": 0.36000000000000004,
+          "versionIntroduced": 1
+        },
+        {
+          "id": "364c418b-65b4-45e6-b96b-33d34248dc64",
+          "clauseId": "470c705c-508d-41e3-bdf4-632ffaf5f386",
+          "fingerprint": "49a2ff6bd3d54c000cce49b8b3ff47b3a4a8456ce67b36bf3344817033bfa7c8",
+          "reason": "Payment of $5000 must be made within 30 days.",
+          "confidence": 0.74,
+          "evidence": [
+            {
+              "snippet": "Payment of $5000 must be made within 30 days."
+            }
+          ],
+          "scoreContribution": 0.55,
+          "versionIntroduced": 1
+        },
+        {
+          "id": "704b2d0d-035c-434f-9f7a-8d784035108b",
+          "clauseId": "d632b9ee-c09c-4136-88a2-110c58c8ced0",
+          "fingerprint": "d2305e725fd3360b517c734732bfb93676911d1c1d69e96091fd2c53a6b1e37b",
+          "reason": "Either party may terminate on material breach.",
+          "confidence": 0.74,
+          "evidence": [
+            {
+              "snippet": "Either party may terminate on material breach."
+            }
+          ],
+          "scoreContribution": 0.36000000000000004,
+          "versionIntroduced": 1
+        }
+      ],
+      "clauseCount": 3,
+      "promptVersion": "v1",
+      "modelVersion": "rules+heuristic",
+      "createdAt": "2026-05-08T18:48:05.326Z"
+    },
+    {
+      "id": "dddeddf9-08a3-4f97-b87b-c1200476cd64",
+      "documentId": "9bb05d21-713d-471c-af8a-d440e0f8af09",
+      "riskScore": 51.8,
+      "flags": [
+        {
+          "id": "cd5e9bd0-fc2e-43a9-b325-189970416f5f",
+          "clauseId": "9d16a5ca-2760-46b8-acbd-9f66642810ae",
+          "fingerprint": "53b81ec28f5d4116a74018b5e63ee7f09277002767b5c049909983f6073f435d",
+          "reason": "INDEMNIFICATION\nThe Vendor shall indemnify and hold harmless the Client from all claims, damages, and liabilities arising from the Vendor's breach of this Agreement.",
+          "confidence": 0.74,
+          "evidence": [
+            {
+              "snippet": "INDEMNIFICATION\nThe Vendor shall indemnify and hold harmless the Client from all claims, damages, and liabilities arising from the Vendor's breach of this Agreement."
+            }
+          ],
+          "scoreContribution": 0.36000000000000004,
+          "versionIntroduced": 1
+        },
+        {
+          "id": "ef369b84-7e6a-4cb0-8201-768995a727a4",
+          "clauseId": "2bd18efb-6db0-4450-b7a3-8f3dea5e00b7",
+          "fingerprint": "dc56241189a8f1d90cae2b37865bc91b2ee2a82248cfca758eecc1a86c968387",
+          "reason": "PAYMENT TERMS\nClient shall pay $10,000 monthly, due within 30 days of invoice.",
+          "confidence": 0.74,
+          "evidence": [
+            {
+              "snippet": "PAYMENT TERMS\nClient shall pay $10,000 monthly, due within 30 days of invoice."
+            }
+          ],
+          "scoreContribution": 0.55,
+          "versionIntroduced": 1
+        },
+        {
+          "id": "4aa3d475-a1a9-4403-80d9-8295b5d0e0fb",
+          "clauseId": "42d2b4fe-636b-4c2b-85dd-9281b6ed1a52",
+          "fingerprint": "42f9cecb4551dce77d152536d58357ce4f81319437bc4aa222aff11735058599",
+          "reason": "LIMITATION OF LIABILITY\nIN NO EVENT SHALL VENDOR'S LIABILITY EXCEED THE FEES PAID IN THE 12 MONTHS PRIOR.",
+          "confidence": 0.74,
+          "evidence": [
+            {
+              "snippet": "LIMITATION OF LIABILITY\nIN NO EVENT SHALL VENDOR'S LIABILITY EXCEED THE FEES PAID IN THE 12 MONTHS PRIOR."
+            }
+          ],
+          "scoreContribution": 0.55,
+          "versionIntroduced": 1
+        },
+        {
+          "id": "89c6a703-6f97-494a-9a17-1a5bba713cf0",
+          "clauseId": "df56e015-ed27-4980-8f00-20525ddb41aa",
+          "fingerprint": "41ccb146f3a1ceabd97fb0d592c77a4163fe3f06788d5d6a5e9b36fe6dd766d6",
+          "reason": "VENDOR SHALL NOT BE LIABLE FOR INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES.",
+          "confidence": 0.74,
+          "evidence": [
+            {
+              "snippet": "VENDOR SHALL NOT BE LIABLE FOR INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES."
+            }
+          ],
+          "scoreContribution": 0.36000000000000004,
+          "versionIntroduced": 1
+        },
+        {
+          "id": "20f9c350-381f-4fb5-86c9-dfd648f7fe10",
+          "clauseId": "258331ac-f605-45c2-9545-d71e47017b28",
+          "fingerprint": "2c6f63e9eba4a78a8f850228cb4e673a1f9cb9a4195df55bdaf42d72d84e7a29",
+          "reason": "TERMINATION\nEither party may terminate on 30 days written notice.",
+          "confidence": 0.74,
+          "evidence": [
+            {
+              "snippet": "TERMINATION\nEither party may terminate on 30 days written notice."
+            }
+          ],
+          "scoreContribution": 0.36000000000000004,
+          "versionIntroduced": 1
+        },
+        {
+          "id": "340025c9-56f3-448b-b08f-cec81ba497a3",
+          "clauseId": "bdaa7983-551e-4b12-b9ca-84ffc1827b4c",
+          "fingerprint": "cf4b069d811e4a467886770c378fbe7b83ce5cbe5701f7c1aada8c2356e4cc8e",
+          "reason": "Client may terminate immediately if Vendor breaches material terms and fails to cure within 15 days.",
+          "confidence": 0.74,
+          "evidence": [
+            {
+              "snippet": "Client may terminate immediately if Vendor breaches material terms and fails to cure within 15 days."
+            }
+          ],
+          "scoreContribution": 0.36000000000000004,
+          "versionIntroduced": 1
+        },
+        {
+          "id": "644a10c5-e5a8-4406-ab1b-92327d63ff1c",
+          "clauseId": "e4d48bfe-173c-468a-88b1-6c3464578384",
+          "fingerprint": "c5bef36aa891e79ec8a064108cf4ab605ec33203bb142c7a5b95e22403f3585c",
+          "reason": "CONFIDENTIALITY\nBoth parties shall maintain strict confidentiality of all non-public information and shall not disclose without prior written consent.",
+          "confidence": 0.74,
+          "evidence": [
+            {
+              "snippet": "CONFIDENTIALITY\nBoth parties shall maintain strict confidentiality of all non-public information and shall not disclose without prior written consent."
+            }
+          ],
+          "scoreContribution": 0.22000000000000003,
+          "versionIntroduced": 1
+        }
+      ],
+      "clauseCount": 7,
+      "promptVersion": "v1",
+      "modelVersion": "rules+heuristic",
+      "createdAt": "2026-05-08T18:48:05.904Z"
+    },
+    {
+      "id": "b726886b-bc22-4922-b315-252e9c659971",
+      "documentId": "54216212-db2f-4c56-9043-19677b41a538",
+      "riskScore": 43.4,
+      "flags": [
+        {
+          "id": "3654c638-f4a0-47b8-99d8-363aa9daf41a",
+          "clauseId": "ff705ebb-a63b-4121-98bf-ae990ddc8f42",
+          "fingerprint": "573c4378372c9af003af836f91baab269eba5ef05f630ac676e69079eb728ad9",
+          "reason": "Party A shall indemnify Party B.",
+          "confidence": 0.74,
+          "evidence": [
+            {
+              "snippet": "Party A shall indemnify Party B."
+            }
+          ],
+          "scoreContribution": 0.36000000000000004,
+          "versionIntroduced": 1
+        },
+        {
+          "id": "13b7d96e-4b71-471f-8ae0-3786664ed010",
+          "clauseId": "63f85cfb-fc89-4abd-8ed2-9e821cbac785",
+          "fingerprint": "49a2ff6bd3d54c000cce49b8b3ff47b3a4a8456ce67b36bf3344817033bfa7c8",
+          "reason": "Payment of $5000 must be made within 30 days.",
+          "confidence": 0.74,
+          "evidence": [
+            {
+              "snippet": "Payment of $5000 must be made within 30 days."
+            }
+          ],
+          "scoreContribution": 0.55,
+          "versionIntroduced": 1
+        },
+        {
+          "id": "73b11386-c7c4-42e9-b488-6b9b5cec0339",
+          "clauseId": "c14a1100-d937-4ff1-8465-f4d4afa79a4f",
+          "fingerprint": "d2305e725fd3360b517c734732bfb93676911d1c1d69e96091fd2c53a6b1e37b",
+          "reason": "Either party may terminate on material breach.",
+          "confidence": 0.74,
+          "evidence": [
+            {
+              "snippet": "Either party may terminate on material breach."
+            }
+          ],
+          "scoreContribution": 0.36000000000000004,
+          "versionIntroduced": 1
+        }
+      ],
+      "clauseCount": 3,
+      "promptVersion": "v1",
+      "modelVersion": "rules+heuristic",
+      "createdAt": "2026-05-08T18:50:23.315Z"
+    },
+    {
+      "id": "754ecddd-a3be-455a-8b17-64bebaf4d01a",
+      "documentId": "b1ddcb4c-4ed4-467a-978e-fb18d7b6987c",
+      "riskScore": 51.8,
+      "flags": [
+        {
+          "id": "ccc70b94-49a0-4582-b4d8-a43911b9490a",
+          "clauseId": "8460f3f9-d5c2-4e61-bb95-7558ea895cb1",
+          "fingerprint": "53b81ec28f5d4116a74018b5e63ee7f09277002767b5c049909983f6073f435d",
+          "reason": "INDEMNIFICATION\nThe Vendor shall indemnify and hold harmless the Client from all claims, damages, and liabilities arising from the Vendor's breach of this Agreement.",
+          "confidence": 0.74,
+          "evidence": [
+            {
+              "snippet": "INDEMNIFICATION\nThe Vendor shall indemnify and hold harmless the Client from all claims, damages, and liabilities arising from the Vendor's breach of this Agreement."
+            }
+          ],
+          "scoreContribution": 0.36000000000000004,
+          "versionIntroduced": 1
+        },
+        {
+          "id": "0bd55d45-3ee9-412a-b7c8-75c656a38da8",
+          "clauseId": "f3526c1a-e543-44ad-8c85-702986a7d868",
+          "fingerprint": "dc56241189a8f1d90cae2b37865bc91b2ee2a82248cfca758eecc1a86c968387",
+          "reason": "PAYMENT TERMS\nClient shall pay $10,000 monthly, due within 30 days of invoice.",
+          "confidence": 0.74,
+          "evidence": [
+            {
+              "snippet": "PAYMENT TERMS\nClient shall pay $10,000 monthly, due within 30 days of invoice."
+            }
+          ],
+          "scoreContribution": 0.55,
+          "versionIntroduced": 1
+        },
+        {
+          "id": "0e7739e2-984e-4fb3-b8ed-3932c55cf681",
+          "clauseId": "ee576b6e-74e7-4bf9-ae44-4b8d2acf820f",
+          "fingerprint": "42f9cecb4551dce77d152536d58357ce4f81319437bc4aa222aff11735058599",
+          "reason": "LIMITATION OF LIABILITY\nIN NO EVENT SHALL VENDOR'S LIABILITY EXCEED THE FEES PAID IN THE 12 MONTHS PRIOR.",
+          "confidence": 0.74,
+          "evidence": [
+            {
+              "snippet": "LIMITATION OF LIABILITY\nIN NO EVENT SHALL VENDOR'S LIABILITY EXCEED THE FEES PAID IN THE 12 MONTHS PRIOR."
+            }
+          ],
+          "scoreContribution": 0.55,
+          "versionIntroduced": 1
+        },
+        {
+          "id": "73e2f29f-43bd-4568-9524-b3d813464fe3",
+          "clauseId": "ab93aa31-7ef7-4519-a893-ade60d03fbc1",
+          "fingerprint": "41ccb146f3a1ceabd97fb0d592c77a4163fe3f06788d5d6a5e9b36fe6dd766d6",
+          "reason": "VENDOR SHALL NOT BE LIABLE FOR INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES.",
+          "confidence": 0.74,
+          "evidence": [
+            {
+              "snippet": "VENDOR SHALL NOT BE LIABLE FOR INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES."
+            }
+          ],
+          "scoreContribution": 0.36000000000000004,
+          "versionIntroduced": 1
+        },
+        {
+          "id": "93c292df-053d-49c4-9555-4f9dc6ac4828",
+          "clauseId": "df91ce6a-126a-4cc4-baec-b7a6175eb2ec",
+          "fingerprint": "2c6f63e9eba4a78a8f850228cb4e673a1f9cb9a4195df55bdaf42d72d84e7a29",
+          "reason": "TERMINATION\nEither party may terminate on 30 days written notice.",
+          "confidence": 0.74,
+          "evidence": [
+            {
+              "snippet": "TERMINATION\nEither party may terminate on 30 days written notice."
+            }
+          ],
+          "scoreContribution": 0.36000000000000004,
+          "versionIntroduced": 1
+        },
+        {
+          "id": "52d70d7a-78fe-450a-b406-fa9754139e38",
+          "clauseId": "8a7a24d0-13cf-4dfb-866d-1b6c667adf79",
+          "fingerprint": "cf4b069d811e4a467886770c378fbe7b83ce5cbe5701f7c1aada8c2356e4cc8e",
+          "reason": "Client may terminate immediately if Vendor breaches material terms and fails to cure within 15 days.",
+          "confidence": 0.74,
+          "evidence": [
+            {
+              "snippet": "Client may terminate immediately if Vendor breaches material terms and fails to cure within 15 days."
+            }
+          ],
+          "scoreContribution": 0.36000000000000004,
+          "versionIntroduced": 1
+        },
+        {
+          "id": "ddcecb78-14d0-470e-a4e7-3e5ad52edfc1",
+          "clauseId": "8a4dd956-bd03-489a-8fe4-ea73c888b4b6",
+          "fingerprint": "c5bef36aa891e79ec8a064108cf4ab605ec33203bb142c7a5b95e22403f3585c",
+          "reason": "CONFIDENTIALITY\nBoth parties shall maintain strict confidentiality of all non-public information and shall not disclose without prior written consent.",
+          "confidence": 0.74,
+          "evidence": [
+            {
+              "snippet": "CONFIDENTIALITY\nBoth parties shall maintain strict confidentiality of all non-public information and shall not disclose without prior written consent."
+            }
+          ],
+          "scoreContribution": 0.22000000000000003,
+          "versionIntroduced": 1
+        }
+      ],
+      "clauseCount": 7,
+      "promptVersion": "v1",
+      "modelVersion": "rules+heuristic",
+      "createdAt": "2026-05-08T18:50:23.889Z"
     }
   ]
 }

@@ -2,6 +2,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { randomUUID } from 'node:crypto'
 import { clauseFingerprint, normalizeText, scoreRisk } from '@legaleasy/shared'
+import { createAnalysisInSanity, patchDocumentStatusInSanity } from './lib/sanityClient'
 
 const dataDir = path.resolve(process.cwd(), '../../data')
 const dbPath = path.join(dataDir, 'db.json')
@@ -31,7 +32,8 @@ function extractClauses(text: string) {
       text,
       fingerprint: clauseFingerprint(text),
       confidence: 0.74,
-      evidence: [{ snippet: text.slice(0, 220) }]
+      evidence: [{ snippet: text.slice(0, 220) }],
+      version: 1 // track clause version for persistent flagging
     }))
 }
 
@@ -53,10 +55,12 @@ async function processDocumentId(documentId: string) {
   const flags = clauses.map((clause, index) => ({
     id: randomUUID(),
     clauseId: clause.id,
+    fingerprint: clause.fingerprint, // persist fingerprint for cross-version matching
     reason: clause.text,
     confidence: clause.confidence,
     evidence: clause.evidence,
-    scoreContribution: contributions[index]
+    scoreContribution: contributions[index],
+    versionIntroduced: 1 // track when flag first appeared
   }))
   db.analyses.push({
     id: randomUUID(),
@@ -68,6 +72,16 @@ async function processDocumentId(documentId: string) {
     modelVersion: 'rules+heuristic',
     createdAt: new Date().toISOString()
   })
+  const savedAnalysis = db.analyses[db.analyses.length - 1]
+  // Persist to Sanity if configured
+  try {
+    if (process.env.SANITY_PROJECT_ID && process.env.SANITY_API_TOKEN) {
+      await createAnalysisInSanity(savedAnalysis)
+      await patchDocumentStatusInSanity(documentId, 'analyzed')
+    }
+  } catch (err) {
+    console.error('[worker] sanity persistence failed', err)
+  }
   doc.status = 'analyzed'
   saveDB(db)
   return { ok: true, riskScore }
@@ -78,9 +92,10 @@ function startFileWorker() {
   console.log('[worker] file queue mode watching', jobsDir)
   const seen = new Set<string>()
   const handle = async (file: string) => {
-    if (seen.has(file) || !file.endsWith('.json')) return
+    if (seen.has(file) || !file.endsWith('.json') || !fs.existsSync(file)) return
     seen.add(file)
     try {
+      if (!fs.existsSync(file)) return
       const job = JSON.parse(fs.readFileSync(file, 'utf8')) as { data?: { documentId?: string } }
       const documentId = job.data?.documentId
       if (!documentId) return
