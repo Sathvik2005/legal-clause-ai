@@ -9,14 +9,27 @@ This repo contains a production-oriented prototype for an AI-powered legal docum
 - `packages/shared`: shared risk, fingerprinting, and schema utilities
 - `apps/web`: lightweight product mock for upload, analysis, dashboard, and chat
 - `docs/feature-roadmap.md`: 100-feature product list plus roadmap
+- `docs/system-architecture-complete.md`: full technical blueprint (architecture, agents, schemas, RAG, risk algorithms, QA, performance, security, CI/CD)
 
 ## Quick start
 
 ```bash
 npm install
-npm run dev:api
-npm run dev:worker
-npm run dev:web
+npm run dev
+```
+
+This starts all three services (API, worker, web) together using `concurrently`:
+- **API**: http://127.0.0.1:3000 (Fastify)
+- **Worker**: Watches `/data/jobs` directory for analysis tasks
+- **Web**: http://localhost:5173 (Vite dev server)
+
+### Running individual services
+
+If you want to run services separately:
+```bash
+npm run dev:api      # Just the API server
+npm run dev:worker   # Just the background worker
+npm run dev:web      # Just the web frontend
 ```
 
 ## API
@@ -31,6 +44,14 @@ The API serves `GET /openapi.json` and the document workflow endpoints used by t
 ```bash
 node packages/api/scripts/e2e_text.js
 ```
+
+- To run the comprehensive E2E test (tests text, PDF, and DOCX uploads):
+
+```bash
+node packages/api/scripts/e2e_full.js
+```
+
+Both tests create documents, trigger analysis, and verify the full pipeline works end-to-end.
 
 ### Sanity (GROQ) integration
 

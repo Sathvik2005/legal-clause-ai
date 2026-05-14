@@ -44,6 +44,12 @@ function queueMode() {
   return process.env.REDIS_URL ? 'bullmq' : 'file'
 }
 
+function readTextPreview(textPath?: string, maxChars = 4000) {
+  if (!textPath || !fs.existsSync(textPath)) return ''
+  const txt = fs.readFileSync(textPath, 'utf8')
+  return txt.slice(0, maxChars)
+}
+
 async function main() {
   const app = Fastify({ logger: true })
 
@@ -72,23 +78,25 @@ async function main() {
       const parts = req.parts()
       let title: string | undefined
       let filePart: any = null
+      let fileBuffer: Buffer | null = null
       for await (const part of parts) {
-        if (part.file) {
-          filePart = part
-          break
-        }
         // simple form field
         if (part.fieldname === 'title') title = part.value
+        if (part.file) {
+          filePart = part
+          fileBuffer = await part.toBuffer()
+        }
       }
-      if (!filePart) return reply.code(400).send({ error: 'no file uploaded' })
-      const buffer = await filePart.toBuffer()
+      if (!filePart || !fileBuffer) return reply.code(400).send({ error: 'no file uploaded' })
+      const buffer = fileBuffer
       const filename = filePart.filename ?? 'upload'
       const mimetype = filePart.mimetype ?? ''
 
       // extract text depending on type
       let extractedText = ''
       try {
-        if (mimetype === 'application/pdf' || filename.toLowerCase().endsWith('.pdf')) {
+        const lowerName = filename.toLowerCase()
+        if (mimetype === 'application/pdf' || lowerName.endsWith('.pdf')) {
           try {
             const pdf = await import('pdf-parse')
             const parsed = await pdf.default(buffer)
@@ -96,7 +104,7 @@ async function main() {
           } catch (e) {
             extractedText = ''
           }
-        } else if (filename.toLowerCase().endsWith('.docx') || mimetype.includes('wordprocessingml')) {
+        } else if (lowerName.endsWith('.docx') || mimetype.includes('wordprocessingml')) {
           try {
             const mammoth = await import('mammoth')
             const result = await mammoth.extractRawText({ buffer })
@@ -109,6 +117,12 @@ async function main() {
         }
       } catch (err) {
         extractedText = ''
+      }
+
+      if (!extractedText.trim()) {
+        return reply.code(422).send({
+          error: 'Could not extract readable text from the uploaded file. Please upload a text-based PDF/DOCX/TXT.'
+        })
       }
 
       const id = randomUUID()
@@ -124,14 +138,19 @@ async function main() {
         try {
           void createDocumentInSanity({ id, title: title ?? null, originalName: filename, mimeType: mimetype, filePath, textPath, status: 'uploaded', createdAt: new Date().toISOString() })
         } catch (err) {
-          app.log.error('sanity create document failed', err)
+          app.log.error({ err }, 'sanity create document failed')
         }
       }
       return reply.code(201).send({ documentId: id })
     }
 
     // Fallback: JSON body with text (existing behavior)
-    const body = z.object({ title: z.string().optional(), text: z.string().min(1) }).parse(req.body)
+    const bodySchema = z.object({ title: z.string().optional(), text: z.string().min(1) })
+    const parsedBody = bodySchema.safeParse(req.body)
+    if (!parsedBody.success) {
+      return reply.code(400).send({ error: 'Provide non-empty text or upload a file (.pdf/.docx/.txt).' })
+    }
+    const body = parsedBody.data
     const id = randomUUID()
     const filePath = path.join(uploadDir, `${id}.txt`)
     fs.writeFileSync(filePath, body.text, 'utf8')
@@ -151,7 +170,7 @@ async function main() {
       try {
         void patchDocumentStatusInSanity(id, 'processing')
       } catch (err) {
-        app.log.error('sanity patch status failed', err)
+        app.log.error({ err }, 'sanity patch status failed')
       }
     }
     if (queueMode() === 'bullmq') {
@@ -170,7 +189,11 @@ async function main() {
     const db = ensureDB()
     const document = db.documents.find((d) => d.id === id)
     if (!document) return reply.code(404).send({ error: 'document not found' })
-    return { document, analyses: db.analyses.filter((a) => a.documentId === id) }
+    return {
+      document,
+      textPreview: readTextPreview(document.textPath),
+      analyses: db.analyses.filter((a) => a.documentId === id)
+    }
   })
 
   app.get('/v1/analytics/summary', async () => {
